@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
 Team.destroy_all
 
@@ -14,6 +8,10 @@ teams_data = JSON.parse(teams_serialized)['data']
 
 # CREATE NBA TEAMS
 
+def url_image(name)
+  "https://res.cloudinary.com/dj1mlcnes/image/upload/v1667254439/nba-project/#{name}.png"
+end
+
 teams_data.each do |team|
   Team.create!(
     name: team['full_name'],
@@ -21,4 +19,11 @@ teams_data.each do |team|
     conference: team['conference'],
     api_id: team['id']
   )
+end
+
+Team.all.each do |team|
+  team.logo.attach(io: URI.open(url_image(team.abbreviation)),
+                   filename: "#{team.abbreviation}-logo.png",
+                   content_type: 'image/png')
+  team.save!
 end

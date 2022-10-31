@@ -1,2 +1,13 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="container-fluid">
+  <div>
+    <ul>
+    <li>Teams</li>
+    <li>Players</li>
+    <li>Game review</li>
+    <%= cl_image_tag Team.find_by(api_id: 1).logo.key, height: 100, width: 100, crop: :fill %>
+    </ul>
+  </div>
+</div>
