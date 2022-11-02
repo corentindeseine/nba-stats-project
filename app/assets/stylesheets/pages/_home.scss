@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+
+.home {
+  &-background {
+    height: 100%;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-menu-list {
+    position: absolute;
+    left: 6%;
+    top: 25%;
+
+    &-item {
+      position: relative;
+
+      p {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        margin-bottom: 16px;
+        font-size: 86px;
+        transition: transform .2s;
+        color: white;
+
+        &:hover {
+          transform: translateX(64px);
+          opacity: 0.8;
+        }
+      }
+
+      i {
+        opacity: 0.8;
+        position: absolute;
+        top: 32%;
+        font-size: 46px;
+        transition: transform 1s;
+      }
+    }
+  }
+}
+
+.ball-hover{
+  transform: rotate(180deg);
+}

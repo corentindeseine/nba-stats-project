@@ -1,13 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-home" data-controller='home-animation'>
+  <div class="home-background">
+    <%= image_tag 'https://res.cloudinary.com/dj1mlcnes/image/upload/v1667393647/nba-project/basketball-2560x1440_2_gcp5sl.jpg', alt: "background basket"%>
 
-<div class="container-fluid">
-  <div>
-    <ul>
-    <li>Teams</li>
-    <li>Players</li>
-    <li>Game review</li>
-    <%= cl_image_tag Team.find_by(api_id: 1).logo.key, height: 100, width: 100, crop: :fill %>
-    </ul>
+    <div class="home-menu-list">
+      <%= render 'shared/home_menu', title: 'Games reviews'  %>
+      <%= render 'shared/home_menu', title: 'Players stats'  %>
+      <%= render 'shared/home_menu', title: 'Teams'  %>
+    </div>
   </div>
 </div>
+
+
+    <%# <%= cl_image_tag Team.find_by(api_id: 1).logo.key, height: 100, width: 100, crop: :fill %> %>
