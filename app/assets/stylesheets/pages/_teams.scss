@@ -13,15 +13,13 @@
 
   &-card {
     margin: auto;
-    background-color: rgb(240,240,240);
+    background-color: white;
     padding: 4px;
-    border: solid rgb(150,150,150) 6px;
     transition: transform .4s;
+    border: solid rgb(210,210,210) 6px;
 
     &:hover {
-      // transform: perspective(800px)  rotateX(-20deg) rotateY(20deg);
-      // transform: perspective(800px)  rotateX(-20deg) rotateY(20deg) rotateY(-20deg);
-      background-color: white;
+    border: solid rgb(150,150,150) 6px;
     }
 
     &-img-container {
@@ -97,13 +95,13 @@
 }
 
 .hover-left-cards {
-  transform: perspective(1000px)  rotateX(-15deg) rotateY(18deg) rotateX(15deg);
+  transform: perspective(1000px)  rotateX(-15deg) rotateY(18deg) ;
 }
 
 .hover-right-cards {
-  transform: perspective(1000px)  rotateX(-15deg) rotateY(-18deg) rotateX(15deg);
+  transform: perspective(1000px)  rotateX(-15deg) rotateY(-18deg);
 }
 
 .hover-logo {
-  transform: scale(1.15);
+  transform: scale(1.2);
 }
