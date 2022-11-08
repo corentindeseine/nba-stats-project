@@ -1,2 +1,33 @@
-<h1>Teams#index</h1>
-<p>Find me in app/views/teams/index.html.erb</p>
+<div class="container-fluid" data-controller='teams-index'>
+  <div class="teams-container">
+    <% @teams.order(:api_id).each do |team| %>
+      <%= link_to team_path(team) do %>
+        <div class="teams-card" data-action='mouseenter->teams-index#mouseOver mouseleave->teams-index#mouseOut'
+                                data-card-id= "<%= team.api_id %>"
+                                data-teams-index-target='card'>
+          <h3> <%= team.name %> </h3>
+          <div class="teams-card-img-container">
+            <%= cl_image_tag team.logo.key, crop: :fill, data: {teams_index_target: "logo",
+                                                                card_id: team.api_id } %>
+          </div>
+          <div class="teams-card-description-container">
+            <h4> Last five games</h4>
+            <div class='teams-card-score-container'>
+              <i class="fa-solid fa-check"></i>
+              <i class="fa-solid fa-xmark"></i>
+              <i class="fa-solid fa-xmark"></i>
+              <i class="fa-solid fa-check"></i>
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div class='teams-card-score-players-container'>
+              <h4> Best players </h4>
+              <p>LeBron James</p>
+              <p>Jason Tatum</p>
+              <p>Kevin Durant</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

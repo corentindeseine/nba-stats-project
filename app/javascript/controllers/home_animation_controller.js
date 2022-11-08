@@ -4,7 +4,14 @@ export default class extends Controller {
  static targets = ['g','p','t']
 
   connect() {
-    console.log()
+    this.gTarget.classList.add('invisible');
+    this.gTarget.classList.remove('ball-hover');
+
+    this.pTarget.classList.add('invisible');
+    this.pTarget.classList.remove('ball-hover');
+
+    this.tTarget.classList.add('invisible');
+    this.tTarget.classList.remove('ball-hover');
   }
 
   mouseOver(event) {
@@ -19,8 +26,6 @@ export default class extends Controller {
     } else if (event.currentTarget.innerHTML === 'Teams'){
       this.tTarget.classList.remove('invisible');
       this.tTarget.classList.add('ball-hover');
-
-
       }
   }
 
@@ -29,12 +34,9 @@ export default class extends Controller {
       this.gTarget.classList.add('invisible');
       this.gTarget.classList.remove('ball-hover');
 
-
     } else if (event.currentTarget.innerHTML === 'Players stats'){
       this.pTarget.classList.add('invisible');
       this.pTarget.classList.remove('ball-hover');
-
-
 
     } else if (event.currentTarget.innerHTML === 'Teams'){
       this.tTarget.classList.add('invisible');

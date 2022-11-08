@@ -1,4 +1,11 @@
 <div class="home-menu-list-item">
   <i class="fa-solid fa-basketball invisible" data-home-animation-target='<%=title.first(1).downcase%>'></i>
-  <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
+  <% if title == 'Teams' %>
+    <%= link_to(teams_path) do %>
+      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
+    <% end %>
+  <% else %>
+      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
+  <% end %>
 </div>
+  
