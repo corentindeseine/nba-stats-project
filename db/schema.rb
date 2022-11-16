@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_31_231010) do
+ActiveRecord::Schema.define(version: 2022_11_16_112401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 2022_10_31_231010) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "date"
+    t.integer "period"
+    t.integer "home_team_score"
+    t.integer "visitor_team_score"
+    t.bigint "home_team_id"
+    t.bigint "visitor_team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["home_team_id"], name: "index_games_on_home_team_id"
+    t.index ["visitor_team_id"], name: "index_games_on_visitor_team_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -76,5 +89,7 @@ ActiveRecord::Schema.define(version: 2022_10_31_231010) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "games", "teams", column: "home_team_id"
+  add_foreign_key "games", "teams", column: "visitor_team_id"
   add_foreign_key "players", "teams"
 end
