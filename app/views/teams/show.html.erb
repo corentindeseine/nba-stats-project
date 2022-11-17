@@ -1,2 +1,47 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<div class="container-fluid">
+  <div class="team-show-container">
+    <h1> <%= @team.name %></h1>
+    <%# <% win_number = @past_games.first(10).select{ |game| } %>
+    <%# <% lose_number = 10 - win_number %>
+    <h2> Last ten games -  </h2>
+    <div class="team-show-games-container">
+      <% @past_games.first(10).each do |game| %>
+        <%= link_to root_path do %>
+          <div class="team-show-game-card ">
+            <div class="win-lose-container">
+              <% if  game.win?(game,@team) %>
+                  <i class="fa-solid fa-check win-game-card"></i>
+              <% else %>
+                  <i class="fa-solid fa-xmark lose-game-card"></i>
+              <% end %>
+            </div>
+            <div class="team-show-game-card-date" >
+              <%= game.date.to_date.strftime('%d %b').upcase %>
+            </div>
+            <div class="team-show-game-card-information
+                        team-show-game-card-information-visitor
+                        <%= 'winning-team' if game.visitor_team_score > game.home_team_score %>">
+              <div>
+                <%= cl_image_tag game.visitor_team.logo.key %>
+                <%= game.visitor_team.name.split(' ').last %>
+              </div>
+              <%= game.visitor_team_score%>
+            </div>
+            <div class="team-show-game-card-information
+                        team-show-game-card-information-home
+                        <%= 'winning-team' if game.visitor_team_score < game.home_team_score %>">
+              <div>
+                <%= cl_image_tag game.home_team.logo.key %>
+                <%= game.home_team.name.split(' ').last  %>
+              </div>
+              <%= game.home_team_score %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <h2> Current players</h2>
+    <div class="team-show-players-container">
+    </div>
+  </div>
+</div>

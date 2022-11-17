@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10,10,10,0.8);
+  background: rgba(71,71,71,0.8);
+  background: linear-gradient(0deg, rgba(30,30,30,0.8) 8%, rgba(0,0,0,0.8) 35%);
   padding: 16px 32px;
   color: white;
   position: fixed;
@@ -25,4 +26,25 @@
   &:hover{
     opacity: 0.8;
   }
+}
+
+.navbar-link {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 24px;
+  opacity: 0.8;
+
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.current-navbar-link {
+  opacity: 1;
+}
+
+.navbar-logos-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 28%;
 }
