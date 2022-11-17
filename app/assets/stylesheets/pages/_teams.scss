@@ -8,7 +8,6 @@
     grid-column-gap: 36px;
     align-items: center;
     height: 100%;
-    margin-top: 120px;
   }
 
   &-card {
@@ -16,10 +15,10 @@
     background-color: white;
     padding: 4px;
     transition: transform .4s;
-    border: solid rgb(210,210,210) 6px;
+    border: solid hsl(0, 0%, 82%) 6px;
 
     &:hover {
-    border: solid rgb(150,150,150) 6px;
+      border: solid rgb(150,150,150) 6px;
     }
 
     &-img-container {
@@ -32,8 +31,8 @@
       img {
         display: block;
         margin: auto;
-        height: 102px;
-        transition: transform .5s;
+        height: 110px;
+        transition: transform .4s;
       }
     }
 
@@ -78,7 +77,6 @@
 .fa-check{
   color: white;
   border-radius: 50%;
-  border: solid 2px #10ea96;
   padding: 6px;
   font-size: 16px;
   background-color: #10ea96;
@@ -88,7 +86,6 @@
 .fa-xmark{
   color: white;
   border-radius: 50%;
-  border: solid 2px #CF0A0A;
   padding: 6px 9px;
   font-size: 16px;
   background-color: #CF0A0A;

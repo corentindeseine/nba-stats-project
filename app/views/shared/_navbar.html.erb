@@ -1,20 +1,15 @@
-<div class="navbar-lewagon">
+<div class="navbar-lewagon" data-controller='navbar'
+                            data-navbar-controller-value='<%= controller_name %>'>
   <div class='navbar-logos-container'>
       <%= link_to image_tag("https://res.cloudinary.com/dj1mlcnes/image/upload/v1667402674/nba-project/NBA_National_Basketball_Association_Logo_PNG720p_-_Vector69Com_sp3eun.png",
                            alt: "NBA", width: 80), root_path  %>
+      <% unless action_name == 'home'%>
+        <%= link_to 'Games', root_path, class:'navbar-link' %>
+        <%= link_to 'Players', root_path, class:'navbar-link' %>
+        <%= link_to 'Teams', root_path, class:'navbar-link', data: {navbar_target: 'teams'} %>
+      <% end %>
   </div>
   <div>
       <i class="fa-solid fa-user"></i>
   </div>
 </div>
-
-
-<%# <div class ='search'> %>
-  <%# <%= form_tag movies_path, method: :get do %>
-    <%# <%= text_field_tag :query, %>
-      <%# params[:query], %>
-      <%# class: "form-control", %>
-      <%# placeholder: "Find a movie" %>
-    <%# <%= submit_tag "Search", class: "btn btn-primary" %>
-  <%# <% end %>
-<%# </div> %>

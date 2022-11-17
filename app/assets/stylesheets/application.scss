@@ -27,6 +27,13 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 80px;
+}
+
 h2 {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 32px;
@@ -48,8 +55,10 @@ h4 {
 }
 
 .container-fluid {
+  margin-top: 100px;
+
   @media (min-width: 1200px) {
-    padding: 16px 60px;
+    padding: 8px 60px;
   }
 
   @media (min-width: 1500px) {

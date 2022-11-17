@@ -4,6 +4,14 @@ export default class extends Controller {
  static targets = ['logo','card']
 
   connect() {
+    this.cardTargets.forEach((element) => {
+      element.classList.remove('hover-left-cards')
+      element.classList.remove('hover-right-cards')
+    })
+
+    this.logoTargets.forEach(element => {
+      element.classList.remove('hover-logo')
+    });
   }
 
   mouseOver(event) {
