@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="team-show-container">
     <% @games_final.each do |key, array| %>
-      <div style="margin-bottom:64px">
+      <div class='day-index-container'>
         <% if key.to_date == Time.now.to_date %>
-          <h1>Games of the night</h1>
+          <h1>Today</h1>
         <% else %>
-          <h1 class='mt-6'> <%= key.to_date.strftime('%a %d %b. ') %> </h1>
+          <h1 class='mt-6'> <%= key.to_date.strftime('%A %d %b') %> </h1>
         <% end %>
-        <div class="team-show-games-container mt-3">
+        <div class="team-show-games-container mt-3 day-index-container-games">
           <% array.each do |game| %>
             <% game = game[:game] %>
             <%= link_to root_path do %>

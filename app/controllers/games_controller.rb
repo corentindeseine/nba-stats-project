@@ -1,11 +1,11 @@
 class GamesController < ApplicationController
 
   def index
-    @games = Game.all
-    games_array = []
     @games_final = []
-    
-    @games.each do |game|
+    games = Game.all
+    games_array = []
+
+    games.each do |game|
       game_hash = { game_date: game.date, game: game }
       games_array << game_hash
 

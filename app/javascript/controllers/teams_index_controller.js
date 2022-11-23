@@ -24,7 +24,7 @@ export default class extends Controller {
 
         card.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
       })
-    })
+    }) 
   }
 
   mouseEnter(event) {
