@@ -16,8 +16,15 @@
 
   &-menu-list {
     position: absolute;
-    left: 3%;
-    top: 18%;
+    @media (min-width: 1200px) {
+      left: 3%;
+      top: 18%;
+    }
+    @media (min-width: 1500px) {
+      left: 5%;
+      top: 18%;
+    }
+
 
     &-item {
       position: relative;
@@ -28,14 +35,27 @@
         font-weight: 700;
         font-style: italic;
         margin-bottom: 16px;
-        font-size: 80px;
         transition: transform .2s;
         color: rgb(230,230,230);
 
-        &:hover {
-          transform: translateX(60px);
-          color: white;
+        @media (min-width: 1200px) {
+          font-size: 80px;
+
+          &:hover {
+            transform: translateX(60px);
+            color: white;
+          }
         }
+        @media (min-width: 1500px) {
+          font-size: 90px;
+
+          &:hover {
+            transform: translateX(70px);
+            color: white;
+          }
+        }
+
+
       }
 
       i {
