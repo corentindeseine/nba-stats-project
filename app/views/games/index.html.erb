@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="team-show-container">
+    <% @games_final.each do |key, array| %>
+      <div style="margin-bottom:64px">
+        <% if key.to_date == Time.now.to_date %>
+          <h1>Games of the night</h1>
+        <% else %>
+          <h1 class='mt-6'> <%= key.to_date.strftime('%a %d %b. ') %> </h1>
+        <% end %>
+        <div class="team-show-games-container mt-3">
+          <% array.each do |game| %>
+            <% game = game[:game] %>
+            <%= link_to root_path do %>
+              <div class="team-show-game-card ">
+                <div class="team-show-game-card-date" >
+                  <%= game.date.to_date.strftime('%d %b').upcase %>
+                </div>
+                <div class="team-show-game-card-information
+                            team-show-game-card-information-visitor
+                            <%= 'winning-team' if game.visitor_team_score > game.home_team_score %>">
+                  <div>
+                    <%= cl_image_tag game.visitor_team.logo.key %>
+                    <%= game.visitor_team.name.split(' ').last %>
+                  </div>
+                  <%= game.visitor_team_score%>
+                </div>
+                <div class="team-show-game-card-information
+                            team-show-game-card-information-home
+                            <%= 'winning-team' if game.visitor_team_score < game.home_team_score %>">
+                  <div>
+                    <%= cl_image_tag game.home_team.logo.key %>
+                    <%= game.home_team.name.split(' ').last  %>
+                  </div>
+                  <%= game.home_team_score %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

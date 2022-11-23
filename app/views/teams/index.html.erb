@@ -2,30 +2,32 @@
   <div class="teams-container">
     <% @teams.order(:api_id).each do |team| %>
       <%= link_to team_path(team) do %>
-        <div class="teams-card" data-action='mouseenter->teams-index#mouseOver mouseleave->teams-index#mouseOut'
-                                data-card-id= "<%= team.api_id %>"
-                                data-teams-index-target='card'>
-          <h3> <%= team.name %> </h3>
-          <div class="teams-card-img-container">
-            <%= cl_image_tag team.logo.key, data: {teams_index_target: "logo",
-                                                                card_id: team.api_id } %>
-          </div>
-          <div class="teams-card-description-container">
-            <h4> Last five games</h4>
-            <div class='teams-card-score-container'>
-            <% team.past_games(team).first(5).each do |game| %>
-              <% if game.win?(game,team) %>
-                <i class="fa-solid fa-check"></i>
-              <% else %>
-                <i class="fa-solid fa-xmark"></i>
-              <% end %>
-            <% end %>
+        <div class="teams-card-hover" data-teams-index-target='container'>
+          <div class="teams-card" data-action='mouseenter->teams-index#mouseEnter
+                                               mouseleave->teams-index#mouseLeave'
+                                  data-card-id= "<%= team.api_id %>"
+                                  data-teams-index-target='card'>
+            <h3> <%= team.name %> </h3>
+            <div class="teams-card-img-container">
+              <%= cl_image_tag team.logo.key, data: {teams_index_target: "logo"} %>
             </div>
-            <div class='teams-card-score-players-container'>
-              <h4>Best players</h4>
-              <p>LeBron James (HC)</p>
-              <p>Jason Tatum (HC)</p>
-              <p>Kevin Durant (HC)</p>
+            <div class="teams-card-description-container">
+              <h4> Last five games</h4>
+              <div class='teams-card-score-container'>
+              <% team.past_games(team).first(5).each do |game| %>
+                <% if game.win?(game,team) %>
+                  <i class="fa-solid fa-check"></i>
+                <% else %>
+                  <i class="fa-solid fa-xmark"></i>
+                <% end %>
+              <% end %>
+              </div>
+              <div class='teams-card-score-players-container'>
+                <h4>Best players</h4>
+                <p>Jason Tatum (HC)</p>
+                <p>Kevin Durant (HC)</p>
+                <p>LeBron James (HC)</p>
+              </div>
             </div>
           </div>
         </div>

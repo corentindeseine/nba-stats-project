@@ -12,13 +12,13 @@
 
   &-card {
     margin: auto;
-    background-color: white;
+    background-color: rgb(240,240,240);
     padding: 4px;
-    transition: transform .4s;
-    border: solid hsl(0, 0%, 82%) 6px;
+    border-radius: 4px;
+    border: solid rgb(100,100,100) 6px;
 
     &:hover {
-      border: solid rgb(150,150,150) 6px;
+      background-color: white;
     }
 
     &-img-container {
@@ -27,12 +27,11 @@
       padding-bottom: 8px;
       margin: 6px auto;
 
-
       img {
         display: block;
         margin: auto;
         height: 110px;
-        transition: transform .4s;
+        transform: scale(1.1)
       }
     }
 
@@ -42,8 +41,10 @@
       margin: 18px auto 12px;
       color: black;
       border-radius: 8px;
-      border: solid rgb(180,180,180) 1px;
+      border: solid rgb(160,160,160) 1px;
       background-color: white;
+      z-index: 1;
+      transition: all 0.5 ease;
     }
 
     &-score-container {
@@ -68,7 +69,8 @@
     }
 
     h3 {
-      color: black;
+      color: rgb(100,100,100);
+      font-size: 30px;
       font-weight: 100;
     }
   }
@@ -91,14 +93,18 @@
   background-color: #CF0A0A;
 }
 
-.hover-left-cards {
-  transform: perspective(1000px)  rotateX(-15deg) rotateY(18deg) ;
-}
-
-.hover-right-cards {
-  transform: perspective(1000px)  rotateX(-15deg) rotateY(-18deg);
-}
-
 .hover-logo {
   transform: scale(1.2);
+}
+
+
+.teams-card-hover {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: transform 2s;
+}
+
+.teams-card-reset {
+  transition-duration: 2s;
+  transform: rotateX(0deg) rotateY(0deg);
 }
