@@ -86,9 +86,9 @@
 
 .day-index-container {
   margin-bottom: 54px;
-  border-radius: 12px;
-  padding: 12px 24px 1px 24px;
-  transition: transform 0.4s;
+  border-radius: 30px;
+  padding: 16px 28px 1px 28px;
+  transition: transform 0.6s;
   background-color: rgb(20,20,20);
   box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
 
@@ -97,7 +97,7 @@
   }
 
   &-games {
-    border-radius: 12px;
+    border-radius: 8px;
     border: 1px solid rgb(200,200,200);
     padding: 20px;
   }
