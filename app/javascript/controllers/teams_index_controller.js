@@ -24,13 +24,13 @@ export default class extends Controller {
 
         card.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
       })
-    }) 
+    })
   }
 
   mouseEnter(event) {
     this.cardTargets.forEach(card => {
       if (event.currentTarget.dataset.cardId === card.dataset.cardId) {
-        card.style.transitionDuration = '.08s'
+        card.style.transitionDuration = '.1s'
       }
     })
   }
