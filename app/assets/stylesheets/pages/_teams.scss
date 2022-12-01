@@ -12,14 +12,11 @@
 
   &-card {
     margin: auto;
+    border: solid 4px rgb(38, 44, 58);
     background: linear-gradient(90deg, #444965 0%, #3f445d 78%, #373c54 103%);
     box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
     padding: 4px;
-    border-radius: 16px;
-
-    // &:hover {
-    //   background-color: white;
-    // }
+    border-radius: 24px;
 
     &-img-container {
       width: 94%;
@@ -97,10 +94,6 @@
   font-size: 16px;
   background-color: #CF0A0A;
   box-shadow: 0px 10px 10px rgba(0,0,0,0.2), 0px 0px 40px rgba(0,0,0,0.2);
-}
-
-.hover-logo {
-  transform: scale(1.2);
 }
 
 
