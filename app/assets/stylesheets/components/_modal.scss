@@ -17,16 +17,17 @@
 
   &-cross-container {
     position: absolute;
-    top: 2%;
+    top: 1%;
     right: 2%;
     font-size: 34px;
     color: rgb(160,160,160);
     transition-duration: 0.4s;
-    opacity: 0.6;
+    opacity: 0.4;
 
 
     &:hover {
     opacity: 1;
+    cursor: pointer;
     }
   }
 
@@ -35,6 +36,7 @@
     display: flex;
     flex-direction: column;
     color: black;
+    height: 600px;
     padding: 20px;
     width: 100%;
     border-radius: 18px;
@@ -46,7 +48,7 @@
       align-items: center;
       justify-content: space-around;
       font-family: 'Roboto Condensed', sans-serif;
-      margin-top: 24px;
+      margin-top: 30px;
     }
 
     &-name {
@@ -57,7 +59,6 @@
       p {
         font-size: 22px;
         margin: 0;
-        margin-top: 16px;
         color: rgb(160,160,160);
       }
     }

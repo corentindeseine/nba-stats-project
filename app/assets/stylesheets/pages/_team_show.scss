@@ -30,6 +30,7 @@
     &:hover {
       transform: scale(1.1);
       background-color: white;
+      cursor: pointer;
     }
 
     &-date {
@@ -93,7 +94,7 @@
   color: rgb(220,220,220);
   padding: 16px 28px 1px 28px;
   transition: transform 0.6s;
-  border-radius: 24px;
+  border-radius: 12px;
   background: linear-gradient(170deg, #252838 45%, #3f435e 90%, #505577 103%);
   box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
 
