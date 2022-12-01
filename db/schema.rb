@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_01_114638) do
+ActiveRecord::Schema.define(version: 2022_12_01_162644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2022_12_01_114638) do
     t.bigint "visitor_team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "api_id"
+    t.integer "api_id"
     t.index ["home_team_id"], name: "index_games_on_home_team_id"
     t.index ["visitor_team_id"], name: "index_games_on_visitor_team_id"
   end
@@ -60,12 +60,33 @@ ActiveRecord::Schema.define(version: 2022_12_01_114638) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "position"
-    t.string "api_id"
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "last_name"
+    t.integer "api_id"
     t.index ["team_id"], name: "index_players_on_team_id"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.string "min"
+    t.integer "pts"
+    t.integer "reb"
+    t.integer "ast"
+    t.integer "blk"
+    t.integer "stl"
+    t.integer "dreb"
+    t.integer "fg3_made"
+    t.integer "fg_pct"
+    t.integer "fg3_pct"
+    t.integer "ft_pct"
+    t.bigint "game_id", null: false
+    t.bigint "player_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "turnover"
+    t.index ["game_id"], name: "index_stats_on_game_id"
+    t.index ["player_id"], name: "index_stats_on_player_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -94,4 +115,6 @@ ActiveRecord::Schema.define(version: 2022_12_01_114638) do
   add_foreign_key "games", "teams", column: "home_team_id"
   add_foreign_key "games", "teams", column: "visitor_team_id"
   add_foreign_key "players", "teams"
+  add_foreign_key "stats", "games"
+  add_foreign_key "stats", "players"
 end

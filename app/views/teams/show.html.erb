@@ -76,11 +76,24 @@
     </div>
     <div class="day-index-container">
       <h2> Players</h2>
+
       <div class="team-show-players-container">
-        <% @team.players.each do |player| %>
-          <div> <%= player.first_name %> <%= player.last_name %> // <%= player.position %> </div>
+        <% @players.each do |player| %>
+          <div>
+            <%= player.first_name %> <%= player.last_name %> // <%= player.position %> //
+            <%= player.average(player.stats, player)[:min] %> MIN,
+            <%= player.average(player.stats, player)[:pts] %> PTS,
+            <%= player.average(player.stats, player)[:reb] %> REB,
+            <%= player.average(player.stats, player)[:ast] %> AST,
+            <%= player.average(player.stats, player)[:blk] %> BLK,
+            <%= player.average(player.stats, player)[:stl] %> STL,
+            <%= player.average(player.stats, player)[:turnover] %> TO
+
+
+          </div>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>
