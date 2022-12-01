@@ -30,29 +30,52 @@ require 'open-uri'
 
 ## CREATE GAMES ##
 
-Game.destroy_all
+# Game.destroy_all
 
 start_date = (Date.today - 24).strftime('%Y-%m-%d')
 end_date = Time.now.strftime('%Y-%m-%d')
 
-url = "https://www.balldontlie.io/api/v1/games?start_date='#{start_date}'&end_date='#{end_date}'&per_page=100"
+# url = "https://www.balldontlie.io/api/v1/games?start_date='#{start_date}'&end_date='#{end_date}'&per_page=100"
+# parsing = URI.open(url).read
+# total_pages = JSON.parse(parsing)['meta']['total_pages']
+
+# for i in 1..total_pages
+#   url_with_page = "#{url}&page=#{i}"
+#   games_serialized = URI.open(url_with_page).read
+#   games = JSON.parse(games_serialized)['data']
+
+#   games.each do |game|
+#     Game.create!(
+#       date: game['date'].split('').first(10).join,
+#       period: game['period'],
+#       home_team_score: game['home_team_score'],
+#       visitor_team_score: game['visitor_team_score'],
+#       home_team_id: Team.find_by(api_id: game['home_team']['id']).id,
+#       visitor_team_id: Team.find_by(api_id: game['visitor_team']['id']).id,
+#       api_id: game['id']
+#     )
+#   end
+# end
+
+## CREATE PLAYERS ##
+
+url = "https://www.balldontlie.io/api/v1/stats?start_date='#{start_date}'&end_date='#{end_date}'&per_page=100"
 parsing = URI.open(url).read
 total_pages = JSON.parse(parsing)['meta']['total_pages']
 
 for i in 1..total_pages
   url_with_page = "#{url}&page=#{i}"
-  games_serialized = URI.open(url_with_page).read
-  games = JSON.parse(games_serialized)['data']
+  players_serialized = URI.open(url_with_page).read
+  players = JSON.parse(players_serialized)['data']
 
-  games.each do |game|
-    Game.create!(
-      date: game['date'].split('').first(10).join,
-      period: game['period'],
-      home_team_score: game['home_team_score'],
-      visitor_team_score: game['visitor_team_score'],
-      home_team_id: Team.find_by(api_id: game['home_team']['id']).id,
-      visitor_team_id: Team.find_by(api_id: game['visitor_team']['id']).id,
-      api_id: game['id']
+  players.each do |player|
+    player = player['player']
+    Player.create(
+      api_id: player['id'],
+      first_name: player['first_name'],
+      last_name: player['last_name'],
+      position: player['position'],
+      team_id: Team.find_by(api_id: player['team_id']).id
     )
   end
 end

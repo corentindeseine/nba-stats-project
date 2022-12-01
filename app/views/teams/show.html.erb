@@ -75,12 +75,11 @@
       </div>
     </div>
     <div class="day-index-container">
-      <h2> Current players</h2>
+      <h2> Players</h2>
       <div class="team-show-players-container">
-        <p> LLLLLLLLLLLLL</p>
-        <p> LLLLLLLLLLLLL</p>
-        <p> LLLLLLLLLLLLL</p>
-        <p> LLLLLLLLLLLLL</p>
+        <% @team.players.each do |player| %>
+          <div> <%= player.first_name %> <%= player.last_name %> // <%= player.position %> </div>
+        <% end %>
       </div>
     </div>
   </div>
