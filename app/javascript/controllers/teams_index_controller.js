@@ -30,7 +30,7 @@ export default class extends Controller {
   mouseEnter(event) {
     this.cardTargets.forEach(card => {
       if (event.currentTarget.dataset.cardId === card.dataset.cardId) {
-        card.style.transitionDuration = '.1s'
+        card.style.transitionDuration = '.05s'
       }
     })
   }

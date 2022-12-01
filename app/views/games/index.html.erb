@@ -1,17 +1,17 @@
 <div class="container-fluid">
   <div class="team-show-container">
     <% @games_final.each do |key, array| %>
-      <div class='day-index-container'>
+      <div class='day-index-container hover-games-container'>
         <% if key.to_date == Time.now.to_date %>
           <h1>Today</h1>
         <% else %>
           <h1 class='mt-6'> <%= key.to_date.strftime('%A %d %b') %> </h1>
         <% end %>
-        <div class="team-show-games-container day-index-container-games">
+        <div class="team-show-games-container day-index-container-games ">
           <% array.each do |game| %>
             <% game = game[:game] %>
             <%= link_to root_path do %>
-              <div class="team-show-game-card ">
+              <div class="team-show-game-card">
                 <div class="team-show-game-card-information
                             team-show-game-card-information-visitor
                             <%= 'winning-team' if game.visitor_team_score > game.home_team_score %>">
