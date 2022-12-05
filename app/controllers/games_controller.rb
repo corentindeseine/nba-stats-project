@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-
   def index
     @games_final = []
     games = Game.all

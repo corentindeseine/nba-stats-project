@@ -7,4 +7,8 @@ class Team < ApplicationRecord
   def past_games(team)
     (team.home_games + team.visitor_games).sort_by { |e| e[:date] }.reverse.reject { |game| game.home_team_score.zero? }
   end
+
+  def sort_players(team, stat)
+    team.players.each.sort_by { |player| player.average(player.stats, player)[stat] }.reverse
+  end
 end

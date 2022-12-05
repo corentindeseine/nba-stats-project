@@ -89,7 +89,7 @@ for i in 1..total_pages
 
   stats.each do |stat|
     Stat.create(
-      min: stat['min'],
+      min: stat['min'].to_i,
       pts: stat['pts'],
       reb: stat['reb'],
       ast: stat['ast'],
@@ -98,9 +98,9 @@ for i in 1..total_pages
       turnover: stat['turnover'],
       dreb: stat['dreb'],
       fg3_made: stat['fg3_made'],
-      fg_pct: stat['fg_pct'],
-      fg3_pct: stat['fg3_pct'],
-      ft_pct: stat['ft_pct'],
+      fg_pct: stat['fg_pct'] * 100,
+      fg3_pct: stat['fg3_pct'] * 100,
+      ft_pct: stat['ft_pct'] * 100,
       game_id: Game.find_by(api_id: stat['game']['id']).id,
       player_id: Player.find_by(api_id: stat['player']['id']).id
     )

@@ -24,10 +24,10 @@
               </div>
               <div class='teams-card-score-players-container'>
                 <h4 style='margin-bottom:20px'>Best players</h4>
-                <% team.players.first(3).each do |player| %>
+                <% team.sort_players(team, :pts).first(3).each do |player| %>
                   <div class="teams-card-score-player">
                   <p> <%= player.first_name %> <%= player.last_name %> </p>
-                  <p>55</p>
+                  <p>  <%= player.average(player.stats, player)[:pts] %>  </p>
                   </div>
                 <% end %>
               </div>

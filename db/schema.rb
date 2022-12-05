@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_01_162644) do
+ActiveRecord::Schema.define(version: 2022_12_05_001234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 2022_12_01_162644) do
   end
 
   create_table "stats", force: :cascade do |t|
-    t.string "min"
     t.integer "pts"
     t.integer "reb"
     t.integer "ast"
@@ -77,14 +76,15 @@ ActiveRecord::Schema.define(version: 2022_12_01_162644) do
     t.integer "stl"
     t.integer "dreb"
     t.integer "fg3_made"
-    t.integer "fg_pct"
-    t.integer "fg3_pct"
-    t.integer "ft_pct"
     t.bigint "game_id", null: false
     t.bigint "player_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "turnover"
+    t.integer "min"
+    t.float "fg_pct"
+    t.float "fg3_pct"
+    t.float "ft_pct"
     t.index ["game_id"], name: "index_stats_on_game_id"
     t.index ["player_id"], name: "index_stats_on_player_id"
   end

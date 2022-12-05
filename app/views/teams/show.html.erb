@@ -82,14 +82,9 @@
           <div>
             <%= player.first_name %> <%= player.last_name %> // <%= player.position %> //
             <%= player.average(player.stats, player)[:min] %> MIN,
-            <%= player.average(player.stats, player)[:pts] %> PTS,
-            <%= player.average(player.stats, player)[:reb] %> REB,
-            <%= player.average(player.stats, player)[:ast] %> AST,
-            <%= player.average(player.stats, player)[:blk] %> BLK,
-            <%= player.average(player.stats, player)[:stl] %> STL,
-            <%= player.average(player.stats, player)[:turnover] %> TO
-
-
+            <%= player.average(player.stats, player)[:pts] %> PTS //
+            <%= player.average(player.stats, player)[:pts] %> PTS //
+            <%= player.average(player.stats, player)[:fg3_pct] %> %
           </div>
         <% end %>
       </div>
