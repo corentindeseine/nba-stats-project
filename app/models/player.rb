@@ -13,6 +13,7 @@ class Player < ApplicationRecord
       blk: average_stat(stats, player, 'blk'),
       stl: average_stat(stats, player, 'stl'),
       turnover: average_stat(stats, player, 'turnover'),
+      fg3_made: average_stat(stats, player, 'fg3_made'),
       dreb: average_stat(stats, player, 'dreb'),
       fg_pct: average_stat_pct(stats, player, 'fg_pct'),
       fg3_pct: average_stat_pct(stats, player, 'fg3_pct'),
@@ -23,10 +24,10 @@ class Player < ApplicationRecord
   private
 
   def average_stat(stats, player, param)
-    (stats.inject(0) { |sum, stat| sum.zero? ? (sum + stat.public_send(param)) : (sum + stat.public_send(param) + 0.0) } / player.stats.length).round(1)
+    (stats.reverse.first(10).inject(0) { |sum, stat| sum.zero? ? (sum + stat.public_send(param)) : (sum + stat.public_send(param) + 0.0) } / 10).round(1)
   end
 
   def average_stat_pct(stats, player, param)
-    (stats.inject(0) { |sum, stat| sum + stat.public_send(param) } / player.stats.reject { |stat| stat.min.zero? }.length).round(1)
+    (stats.reverse.first(10).inject(0) { |sum, stat| sum + stat.public_send(param) } / player.stats.reverse.first(10).reject { |stat| stat.min.zero? }.length).round(1)
   end
 end

@@ -7,6 +7,8 @@
     }
   }
 
+  // GAMES //
+
   &-games-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -64,30 +66,61 @@
       margin-right: 4px;
     }
   }
+
+  // PLAYERS //
+
+  &-players {
+    &-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-row-gap: 30px;
+      grid-column-gap: 42px;
+      margin: 32px 0px 16px 0px;
+    }
+
+    &-card {
+      text-align: center;
+      border: solid 4px rgb(38, 44, 58);
+      background: linear-gradient(90deg, #444965 0%, #3f445d 78%, #373c54 103%);
+      box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
+      padding: 4px;
+      border-radius: 24px;
+
+      &-description {
+        width: 91%;
+        padding: 4px 14px;
+        margin: 18px auto 12px;
+        color: black;
+        border-radius: 8px;
+        background-color: whitesmoke;
+        z-index: 1;
+      }
+
+      &-stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      p {
+        margin-bottom: 4px
+      }
+
+      h3 {
+        margin: 12px 0 0 0;
+      }
+
+      i {
+        font-size: 70px;
+        margin: 8px 0px;
+        color: white;
+      }
+    }
+  }
+
+
+
 }
-
-.winning-team {
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.win-lose-container {
-  position: absolute;
-  right: 10px;
-}
-
-.lose-game-card {
-  padding: 4px 6px;
-  font-size: 10px;
-}
-
-.win-game-card {
-  padding: 4px;
-  font-size: 10px;
-}
-
-
-
 
 .day-index-container {
   margin-bottom: 58px;
@@ -121,4 +154,24 @@
   &:hover{
     transform: scale(1.05);
   }
+}
+
+.winning-team {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.win-lose-container {
+  position: absolute;
+  right: 10px;
+}
+
+.lose-game-card {
+  padding: 4px 6px;
+  font-size: 10px;
+}
+
+.win-game-card {
+  padding: 4px;
+  font-size: 10px;
 }

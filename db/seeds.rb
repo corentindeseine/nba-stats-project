@@ -97,7 +97,7 @@ for i in 1..total_pages
       stl: stat['stl'],
       turnover: stat['turnover'],
       dreb: stat['dreb'],
-      fg3_made: stat['fg3_made'],
+      fg3_made: stat['fg3m'],
       fg_pct: stat['fg_pct'] * 100,
       fg3_pct: stat['fg3_pct'] * 100,
       ft_pct: stat['ft_pct'] * 100,

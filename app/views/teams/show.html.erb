@@ -76,15 +76,59 @@
     </div>
     <div class="day-index-container">
       <h2> Players</h2>
-
       <div class="team-show-players-container">
         <% @players.each do |player| %>
-          <div>
-            <%= player.first_name %> <%= player.last_name %> // <%= player.position %> //
-            <%= player.average(player.stats, player)[:min] %> MIN,
-            <%= player.average(player.stats, player)[:pts] %> PTS //
-            <%= player.average(player.stats, player)[:pts] %> PTS //
-            <%= player.average(player.stats, player)[:fg3_pct] %> %
+          <div class ="team-show-players-card">
+            <h3> <%= player.first_name %> <%= player.last_name %> </h3>
+            <h5> <%= player.position %></h5>
+            <i class="fa-solid fa-user"></i>
+            <div class="team-show-players-card-description">
+              <h4> Last 10 games stats</h4>
+              <div class="team-show-players-card-stat">
+                <p>Min</p>
+                <p><%= player.average(player.stats, player)[:min] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>Points</p>
+              <p><%= player.average(player.stats, player)[:pts] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>Assits</p>
+                <p><%= player.average(player.stats, player)[:ast] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>Rebonds</p>
+                <p><%= player.average(player.stats, player)[:reb] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>Blocks</p>
+                <p><%= player.average(player.stats, player)[:blk] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>Steals</p>
+                <p><%= player.average(player.stats, player)[:stl] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>3-pts made</p>
+                <p><%= player.average(player.stats, player)[:fg3_made] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>Turnover</p>
+                <p><%= player.average(player.stats, player)[:turnover] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>FG%</p>
+                <p><%= player.average(player.stats, player)[:fg_pct] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>FG3%</p>
+                <p><%= player.average(player.stats, player)[:fg3_pct] %></p>
+              </div>
+              <div class="team-show-players-card-stat">
+                <p>FT%</p>
+                <p><%= player.average(player.stats, player)[:ft_pct] %></p>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>
