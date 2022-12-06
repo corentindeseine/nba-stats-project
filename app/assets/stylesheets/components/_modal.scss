@@ -71,6 +71,20 @@
       font-size: 44px;
       color: rgb(160,160,160);
     }
+
+    &-stats{
+
+      &-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      &-table {
+        width: 110%;
+        text-align: center;
+      }
+
+    }
   }
 
   img {
