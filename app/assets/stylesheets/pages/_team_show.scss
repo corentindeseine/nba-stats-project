@@ -1,8 +1,62 @@
+.day-index-container {
+  margin-bottom: 58px;
+  color: rgb(220,220,220);
+  padding: 16px 28px 1px 28px;
+  transition: transform 0.6s;
+  border-radius: 12px;
+  background: linear-gradient(170deg, #252838 45%, #3f435e 90%, #505577 103%);
+  box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
+
+  &-games {
+    border-radius: 16px;
+    padding: 20px;
+    border: solid 1px rgb(140,140,140);
+  }
+
+  h1 {
+    margin-left: 0px;
+    font-size: 48px;
+  }
+
+  i {
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.2)
+    ;
+  }
+}
+
+.hover-games-container {
+  transition: transform 0.6s;
+
+  &:hover{
+    transform: scale(1.05);
+  }
+}
+
+.winning-team {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.win-lose-container {
+  position: absolute;
+  right: 10px;
+}
+
+.lose-game-card {
+  padding: 4px 6px;
+  font-size: 10px;
+}
+
+.win-game-card {
+  padding: 4px;
+  font-size: 10px;
+}
+
 .team-show {
 
   &-container {
     h1 {
-      margin-left: -30px;
+      margin-left: -12px;
       margin-bottom: 32px;
     }
   }
@@ -74,26 +128,43 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-row-gap: 30px;
-      grid-column-gap: 42px;
+      grid-column-gap: 24px;
       margin: 32px 0px 16px 0px;
     }
 
     &-card {
+      position: relative;
       text-align: center;
       border: solid 4px rgb(38, 44, 58);
       background: linear-gradient(90deg, #444965 0%, #3f445d 78%, #373c54 103%);
       box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
       padding: 4px;
       border-radius: 24px;
+      transition: transform .4s;
+
+      &:hover {
+        transform: scale(1.06);
+        cursor: pointer;
+      }
+
+      &-logo-container {
+        position: absolute;
+        left: 6%;
+        top: 2%;
+
+        img {
+          width: 40px;
+        }
+      }
+
 
       &-description {
-        width: 91%;
+        width: 90%;
         padding: 4px 14px;
         margin: 18px auto 12px;
-        color: black;
-        border-radius: 8px;
-        background-color: whitesmoke;
-        z-index: 1;
+        color: white;
+        border: 1px solid white;
+        border-radius: 12px;
       }
 
       &-stat {
@@ -103,75 +174,19 @@
       }
 
       p {
-        margin-bottom: 4px
+        margin-bottom: 2px;
+        color: rgb(200,200,200);
       }
 
       h3 {
-        margin: 12px 0 0 0;
+        margin: 18px 0 0 0;
       }
 
       i {
         font-size: 70px;
-        margin: 8px 0px;
+        margin-top: 30px;
         color: white;
       }
     }
   }
-
-
-
-}
-
-.day-index-container {
-  margin-bottom: 58px;
-  color: rgb(220,220,220);
-  padding: 16px 28px 1px 28px;
-  transition: transform 0.6s;
-  border-radius: 12px;
-  background: linear-gradient(170deg, #252838 45%, #3f435e 90%, #505577 103%);
-  box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
-
-  &-games {
-    border-radius: 16px;
-    padding: 20px;
-    border: solid 1px rgb(140,140,140);
-  }
-
-  h1 {
-    margin-left: 0px;
-    font-size: 48px;
-  }
-
-  i {
-    box-shadow: 0px 0px 0px rgba(0,0,0,0.2)
-    ;
-  }
-}
-
-.hover-games-container {
-  transition: transform 0.6s;
-
-  &:hover{
-    transform: scale(1.05);
-  }
-}
-
-.winning-team {
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.win-lose-container {
-  position: absolute;
-  right: 10px;
-}
-
-.lose-game-card {
-  padding: 4px 6px;
-  font-size: 10px;
-}
-
-.win-game-card {
-  padding: 4px;
-  font-size: 10px;
 }
