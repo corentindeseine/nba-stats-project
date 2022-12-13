@@ -1,0 +1,166 @@
+<div class="versus-container">
+  <div class="versus-form-container">
+    <%= simple_form_for :search, url: player_vs_player_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+      <%= f.input :player_one, :label => false, placeholder: "Select player one" %>
+      <%= f.input :player_two, :label => false, placeholder: "Select player two" %>
+      <%= f.submit "Confirm", class: "" %>
+    <% end %>
+  </div>
+
+  <div class="versus-players-container">
+    <div class="versus-player-one-container">
+      <% unless @players.empty? %>
+        <% player = @players.first %>
+        <div class ="team-show-players-card">
+          <div class="team-show-players-card-logo-container">
+            <%= cl_image_tag player.team.logo.key %>
+          </div>
+          <div class="team-show-players-card-rating">
+            <p id='player-card-score'><%= player.average(player.stats, player)[:rating].round(0) %></p>
+          </div>
+          <i class="fa-solid fa-user"></i>
+          <h3> <%= player.first_name %> <%= player.last_name %> </h3>
+          <h5>
+            <% if player.position == 'C' %>
+              <%= 'Center' %>
+            <% elsif player.position == 'F' %>
+              <%= 'Forward' %>
+            <% elsif player.position == 'G' %>
+              <%= 'Guard' %>
+            <% else %>
+              <%= player.position %>
+            <% end %>
+          </h5>
+          <div class="team-show-players-card-description">
+            <h5>Last ten games</h5>
+            <div class="team-show-players-card-stat">
+              <p>Minutes</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:min] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Points</p>
+            <p id='card-stat-row'><%= player.average(player.stats, player)[:pts] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Assits</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:ast] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Rebonds</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:reb] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Blocks</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:blk] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Steals</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:stl] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Turnover</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:turnover] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Games played</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:games_played] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>5 games rating +/- </p>
+              <% five_game_plus_minus = (player.average(player.stats, player)[:rating_five_games]  - player.average(player.stats, player)[:rating]).round(1) %>
+              <% if player.average(player.stats, player)[:rating_five_games].zero? %>
+                <p> - </p>
+              <% else %>
+                <p id='card-stat-row' class="<%= 'team-show-players-card-fga-positive' if five_game_plus_minus > 0 %>
+                                            <%= 'team-show-players-card-fga-negative' if five_game_plus_minus < 0 %>">
+                  <%= five_game_plus_minus %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="versus-player-comparaison-container">
+
+    </div>
+
+    <div class="versus-player-two-container">
+      <% unless @players.empty? %>
+        <% player = @players.last %>
+        <div class ="team-show-players-card">
+          <div class="team-show-players-card-logo-container">
+            <%= cl_image_tag player.team.logo.key %>
+          </div>
+          <div class="team-show-players-card-rating">
+            <p id='player-card-score'><%= player.average(player.stats, player)[:rating].round(0) %></p>
+          </div>
+          <i class="fa-solid fa-user"></i>
+          <h3> <%= player.first_name %> <%= player.last_name %> </h3>
+          <h5>
+            <% if player.position == 'C' %>
+              <%= 'Center' %>
+            <% elsif player.position == 'F' %>
+              <%= 'Forward' %>
+            <% elsif player.position == 'G' %>
+              <%= 'Guard' %>
+            <% else %>
+              <%= player.position %>
+            <% end %>
+          </h5>
+          <div class="team-show-players-card-description">
+            <h5>Last ten games</h5>
+            <div class="team-show-players-card-stat">
+              <p>Minutes</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:min] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Points</p>
+            <p id='card-stat-row'><%= player.average(player.stats, player)[:pts] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Assits</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:ast] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Rebonds</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:reb] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Blocks</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:blk] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Steals</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:stl] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Turnover</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:turnover] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>Games played</p>
+              <p id='card-stat-row'><%= player.average(player.stats, player)[:games_played] %></p>
+            </div>
+            <div class="team-show-players-card-stat">
+              <p>5 games rating +/- </p>
+              <% five_game_plus_minus = (player.average(player.stats, player)[:rating_five_games]  - player.average(player.stats, player)[:rating]).round(1) %>
+              <% if player.average(player.stats, player)[:rating_five_games].zero? %>
+                <p> - </p>
+              <% else %>
+                <p id='card-stat-row' class="<%= 'team-show-players-card-fga-positive' if five_game_plus_minus > 0 %>
+                                            <%= 'team-show-players-card-fga-negative' if five_game_plus_minus < 0 %>">
+                  <%= five_game_plus_minus %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="reset-button-container">
+    <%= link_to "RESET PLAYERS", player_vs_player_path %>
+  </div>
+</div>

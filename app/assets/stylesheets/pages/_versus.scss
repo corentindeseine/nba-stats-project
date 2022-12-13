@@ -1,0 +1,47 @@
+.versus-container {
+  margin-top: 100px;
+
+  @media (min-width: 1200px) {
+    padding: 8px 40px;
+  }
+
+  @media (min-width: 1500px) {
+    padding: 16px 140px;
+  }
+}
+
+.versus {
+  &-container {
+    
+    @media (min-width: 1200px) {
+      padding: 8px 40px;
+    }
+
+    @media (min-width: 1500px) {
+      padding: 16px 140px;
+    }
+  }
+
+  &-players-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  &-player-one-container, &-player-two-container {
+    width: 20%
+  }
+}
+
+.reset-button-container {
+  position: fixed;
+  bottom: 10%;
+  left: 48%;
+  background-color: black;
+  padding: 6px 12px;
+  border-radius: 16px;
+
+  a {
+    color: white;
+  }
+}
