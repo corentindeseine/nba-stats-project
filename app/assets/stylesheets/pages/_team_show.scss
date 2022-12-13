@@ -150,8 +150,8 @@
 
       &-logo-container {
         position: absolute;
-        left: 6%;
-        top: 2%;
+        top: 3%;
+        right: 5%;
 
         img {
           width: 40px;
@@ -160,7 +160,6 @@
 
 
       &-description {
-        position: relative;
         width: 90%;
         padding: 4px 14px;
         margin: 18px auto 12px;
@@ -178,8 +177,8 @@
 
       &-rating {
         position: absolute;
-        top: -7%;
-        right: -3%;
+        left: 6%;
+        top: 3%;
       }
 
       p {
@@ -211,12 +210,12 @@
 #player-card-score {
   background-color: #8c8c8c;
   color: white;
-  padding: 4px 4px 4px 0px;
+  padding: 3px 4px 2px 0px;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   text-align: center;
-  font-size: 19px;
+  font-size: 22px;
   font-style: italic;
   font-weight: 600;
 }
