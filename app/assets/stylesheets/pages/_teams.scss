@@ -105,3 +105,17 @@
   transition-duration: 2s;
   transform: rotateX(0deg) rotateY(0deg);
 }
+
+
+#teams-card-score {
+  background-color: rgb(140,140,140);
+  color: white;
+  padding: 5px 2px 5px 0px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+}

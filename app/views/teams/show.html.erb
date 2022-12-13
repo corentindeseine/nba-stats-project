@@ -218,6 +218,9 @@
                 <p>Games played</p>
                 <p id='card-stat-row'><%= player.average(player.stats, player)[:games_played] %></p>
               </div>
+              <div class="team-show-players-card-rating">
+                <p id='player-card-score'><%= player.average(player.stats, player)[:rating].round(0) %></p>
+              </div>
             </div>
           </div>
         <% end %>

@@ -82,6 +82,17 @@ end
 
 ##### CREATE STATS #####
 
+def triple_or_double_double(pts, ast, reb, blk, stl)
+  array = [pts, ast, reb, blk, stl].reject { |stat| stat < 10 }
+  if array.length == 2
+    1
+  elsif array.length > 2
+    2
+  else
+    0
+  end
+end
+
 for i in 1..total_pages
   url_with_page = "#{url}&page=#{i}"
   stats_serialized = URI.open(url_with_page).read
@@ -102,7 +113,15 @@ for i in 1..total_pages
       fg3_pct: stat['fg3_pct'] * 100,
       ft_pct: stat['ft_pct'] * 100,
       game_id: Game.find_by(api_id: stat['game']['id']).id,
-      player_id: Player.find_by(api_id: stat['player']['id']).id
+      player_id: Player.find_by(api_id: stat['player']['id']).id,
+      rating: stat['pts'] +
+              stat['ast'] * 1.5 +
+              stat['reb'] * 1.2 +
+              stat['blk'] * 3 +
+              stat['stl'] * 3 -
+              stat['turnover'] * 2 +
+              stat['fg3m'] +
+              triple_or_double_double(stat['pts'], stat['ast'], stat['reb'], stat['blk'], stat['stl'])
     )
   end
 end

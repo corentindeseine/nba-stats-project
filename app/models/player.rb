@@ -18,7 +18,8 @@ class Player < ApplicationRecord
       fg_pct: average_stat(stats, player, 'fg_pct'),
       fg3_pct: average_stat(stats, player, 'fg3_pct'),
       ft_pct: average_stat(stats, player, 'ft_pct'),
-      games_played: games_played(player)
+      games_played: games_played(player),
+      rating: average_stat(stats, player, 'rating')
     }
   end
 
