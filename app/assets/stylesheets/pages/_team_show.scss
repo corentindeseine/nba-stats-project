@@ -181,6 +181,14 @@
         top: 3%;
       }
 
+      &-fga-positive {
+        color: #10ea96 !important;
+      }
+
+      &-fga-negative {
+        color: #ce2e2e !important;
+      }
+
       p {
         margin-bottom: 2px;
         color: rgb(200,200,200);
@@ -210,12 +218,12 @@
 #player-card-score {
   background-color: #8c8c8c;
   color: white;
-  padding: 3px 4px 2px 0px;
+  padding: 3px 4px 0px 0px;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   text-align: center;
-  font-size: 22px;
+  font-size: 21px;
   font-style: italic;
   font-weight: 600;
 }

@@ -7,18 +7,15 @@
     --bs-modal-width: 1680px;
   }
   position: fixed;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding-top: 40px;
+  margin-top: 70px;
   display: none;
   width: 100%;
   height: 100%;
 
   &-cross-container {
     position: absolute;
-    top: 1%;
-    right: 2%;
+    top: 0%;
+    right: 1%;
     font-size: 34px;
     color: rgb(160,160,160);
     transition-duration: 0.4s;
@@ -80,7 +77,7 @@
       }
 
       &-table {
-        width: 110%;
+        width: 100%;
         text-align: center;
       }
 
