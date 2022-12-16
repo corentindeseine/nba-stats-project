@@ -90,7 +90,7 @@
   &-win-lose-menu {
     position: absolute;
     left: 22%;
-    top: 76%;
+    top: 78%;
     color: #a0a0a0;
     background-color: white;
     border-radius: 4px;
@@ -267,7 +267,7 @@
 #player-card-score {
   background-color: #8c8c8c;
   color: white;
-  padding: 4px 0px 0px 0px;
+  padding: 4px 4px 0px 0px;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -297,6 +297,6 @@
 }
 
 .selected-option {
-  color: #2E3244;
+  color: #414761;
   font-weight: 700;
 }
