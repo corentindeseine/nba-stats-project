@@ -7,9 +7,6 @@
   background: linear-gradient(170deg, #2f3245 45%, #3f435e 90%, #505577 103%);
   box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
 
-  &-games {
-  }
-
   h1 {
     margin-left: 0px;
     font-size: 48px;
@@ -62,7 +59,59 @@
     }
   }
 
+  &-main-content-container {
+    margin-bottom: 58px;
+    color: rgb(220,220,220);
+    padding: 16px 28px 1px 28px;
+    transition: transform 0.6s;
+    border-radius: 12px;
+    background: linear-gradient(170deg, #2f3245 45%, #3f435e 90%, #505577 103%);
+    box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
+
+    h1 {
+      margin-left: 0px;
+      font-size: 48px;
+    }
+
+    i {
+      box-shadow: 0px 0px 0px rgba(0,0,0,0.2)
+      ;
+    }
+  }
+
   // GAMES //
+
+  &-game-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &-win-lose-menu {
+    position: absolute;
+    left: 22.5%;
+    top: 85%;
+    color: #a0a0a0;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.4s;
+    z-index: 100;
+
+    &-item {
+      &:hover {
+        background-color: rgb(230,230,230);
+        color: #2E3244;
+        cursor: pointer;
+      }
+    }
+
+    ul{
+      margin: 0;
+      padding: 0px 60px 0px 6px;
+      font-size: 20px;
+    }
+  }
 
   &-games-container {
     display: grid;
@@ -218,7 +267,7 @@
 #player-card-score {
   background-color: #8c8c8c;
   color: white;
-  padding: 3px 4px 0px 0px;
+  padding: 4px 0px 0px 0px;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -226,4 +275,23 @@
   font-size: 21px;
   font-style: italic;
   font-weight: 600;
+}
+
+
+#ten-games-chevron {
+  font-size: 16px;
+  transition: transform 0.4s;
+  margin-left: 14px;
+  border-radius: 4px;
+  border: 1px solid;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.rotate {
+  transform: rotate(-0.5turn);
+}
+
+.maxheight {
+  height: 100%
 }

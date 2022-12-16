@@ -1,10 +1,21 @@
 <div class="container-fluid" data-controller='team-show'>
   <div class="team-show-container">
     <h1> <%= @team.name %></h1>
-    <%# <% win_number = @past_games.first(10).select{ |game| } %>
-    <%# <% lose_number = 10 - win_number %>
-    <div class="day-index-container">
-      <h2> Last ten games <i style="font-size:28px" class="fa-solid fa-chevron-down"></i></h2>
+    <div class="team-show-main-content-container">
+      <div class="team-show-game-title">
+        <h2> Last ten games</h2>
+        <i class="fa-solid fa-chevron-down"
+                              id="ten-games-chevron"
+                              data-action="click->team-show#ShowWinLoseMenu"></i>
+        <div class="team-show-win-lose-menu d-none" data-team-show-target="WinLoseMenu">
+          <div class="team-show-win-lose-menu-item">
+            <ul>Win</ul>
+          </div>
+          <div class="team-show-win-lose-menu-item">
+            <ul>Lose</ul>
+          </div>
+        </div>
+      </div>
       <div class="team-show-games-container">
         <% @past_games.first(10).each do |game| %>
           <div class="team-show-game-card" data-action="click->team-show#launchGame"
@@ -159,7 +170,7 @@
         <% end %>
       </div>
     </div>
-    <div class="day-index-container">
+    <div class="team-show-main-content-container">
       <h2> Players</h2>
       <div class="team-show-players-container">
         <% @players.each do |player| %>
