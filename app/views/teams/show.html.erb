@@ -6,12 +6,12 @@
         <h2> Last ten games</h2>
         <i class="fa-solid fa-chevron-down"
                               id="ten-games-chevron"
-                              data-action="click->team-show#ShowWinLoseMenu"></i>
-        <div class="team-show-win-lose-menu d-none" data-team-show-target="WinLoseMenu">
-          <div class="team-show-win-lose-menu-item">
+                              data-action="click->team-show#showWinLoseMenu"></i>
+        <div class="team-show-win-lose-menu d-none" data-team-show-target="winLoseMenu">
+          <div class="team-show-win-lose-menu-item" data-action="click->team-show#sortByWin" data-team-show-target="win">
             <ul>Win</ul>
           </div>
-          <div class="team-show-win-lose-menu-item">
+          <div class="team-show-win-lose-menu-item" data-action="click->team-show#sortByLose" data-team-show-target="lose">
             <ul>Lose</ul>
           </div>
         </div>
@@ -25,7 +25,9 @@
                                            data-visitor-score="<%= game.visitor_team_score %>"
                                            data-home-name="<%= game.home_team.name %>"
                                            data-home-logo="<%= game.home_team.logo.url %>"
-                                           data-home-score="<%= game.home_team_score %>">
+                                           data-home-score="<%= game.home_team_score %>"
+                                           data-team-show-target='gameCard'
+                                           data-team-name='<%= @team.name %>'>
             <div class="win-lose-container">
               <% if  game.win?(game,@team) %>
                   <i class="fa-solid fa-check win-game-card"></i>

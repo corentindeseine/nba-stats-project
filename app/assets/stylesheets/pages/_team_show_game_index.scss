@@ -89,8 +89,8 @@
 
   &-win-lose-menu {
     position: absolute;
-    left: 22.5%;
-    top: 85%;
+    left: 22%;
+    top: 76%;
     color: #a0a0a0;
     background-color: white;
     border-radius: 4px;
@@ -109,7 +109,7 @@
     ul{
       margin: 0;
       padding: 0px 60px 0px 6px;
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
@@ -279,19 +279,24 @@
 
 
 #ten-games-chevron {
-  font-size: 16px;
-  transition: transform 0.4s;
-  margin-left: 14px;
+  font-size: 14px;
+  transition: transform 0.2s;
+  margin-left: 12px;
   border-radius: 4px;
   border: 1px solid;
   padding: 3px;
   cursor: pointer;
 }
 
+
+
+// Classes for JS
+
 .rotate {
   transform: rotate(-0.5turn);
 }
 
-.maxheight {
-  height: 100%
+.selected-option {
+  color: #2E3244;
+  font-weight: 700;
 }
