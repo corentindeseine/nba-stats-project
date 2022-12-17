@@ -1,18 +1,6 @@
-.versus-container {
-  margin-top: 100px;
-
-  @media (min-width: 1200px) {
-    padding: 8px 40px;
-  }
-
-  @media (min-width: 1500px) {
-    padding: 16px 140px;
-  }
-}
-
 .versus {
   &-container {
-    
+
     @media (min-width: 1200px) {
       padding: 8px 40px;
     }
@@ -20,6 +8,10 @@
     @media (min-width: 1500px) {
       padding: 16px 140px;
     }
+  }
+
+  &-form-container {
+    margin-top: 100px;
   }
 
   &-players-container {
@@ -35,11 +27,16 @@
 
 .reset-button-container {
   position: fixed;
-  bottom: 10%;
-  left: 48%;
-  background-color: black;
+  bottom: 6%;
+  left: 50%;
+  margin-left: -75px;
+  background: linear-gradient(170deg, #2f3245 45%, #3f435e 90%, #505577 103%);
   padding: 6px 12px;
   border-radius: 16px;
+
+  &:hover {
+    border: 1px solid rgb(180,180,180);
+  }
 
   a {
     color: white;

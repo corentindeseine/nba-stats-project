@@ -19,8 +19,8 @@ export default class extends Controller {
     this.cardTargets.forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const force = 10;
-        const offsetX = (card.offsetWidth/2 - e.layerX)/ force;
-        const offsetY = -(card.offsetHeight / 2 - e.layerY) / force;
+        const offsetX = (card.offsetWidth / 2 - e.layerX) / force;
+        const offsetY = - (card.offsetHeight / 2 - e.layerY) / force;
 
         card.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
       })
