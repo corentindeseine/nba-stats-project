@@ -43,6 +43,10 @@ gem 'devise'
 # Cloudinary / image
 gem "cloudinary"
 
+
+# Running data every morning
+gem 'whenever', require: false
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_13_055528) do
+ActiveRecord::Schema.define(version: 2022_12_22_122932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2022_12_13_055528) do
     t.float "fg3_pct"
     t.float "ft_pct"
     t.integer "rating"
+    t.integer "api_id"
     t.index ["game_id"], name: "index_stats_on_game_id"
     t.index ["player_id"], name: "index_stats_on_player_id"
   end
