@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["team","game","player"]
+  static targets = ["team","game","player","navbarMenu"]
   static values = { controller: String }
 
   connect() {
@@ -14,5 +14,9 @@ export default class extends Controller {
       else if (this.controllerValue == 'games') {
       this.gameTarget.classList.add('current-navbar-link')
     }
+  }
+
+  showMenu() {
+    this.navbarMenuTarget.classList.toggle('menu-open')
   }
 }

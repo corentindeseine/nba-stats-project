@@ -45,7 +45,7 @@ for i in 1..total_pages
   games = JSON.parse(games_serialized)['data']
 
   games.each do |game|
-    Game.create!(
+    Game.create(
       date: game['date'].split('').first(10).join,
       period: game['period'],
       home_team_score: game['home_team_score'],
@@ -100,6 +100,7 @@ for i in 1..total_pages
 
   stats.each do |stat|
     Stat.create(
+      api_id: stat['api_id'],
       min: stat['min'].to_i,
       pts: stat['pts'],
       reb: stat['reb'],

@@ -18,7 +18,7 @@ export default class extends Controller {
 
   showWinLoseMenu(event){
     event.currentTarget.classList.toggle("rotate")
-    this.winLoseMenuTarget.classList.toggle('d-none')
+    this.winLoseMenuTarget.classList.toggle('win-lose-open')
   }
 
   sortByWin(event){

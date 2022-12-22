@@ -3,6 +3,9 @@ class Game < ApplicationRecord
   belongs_to :visitor_team, class_name: 'Team', foreign_key: 'visitor_team_id'
   has_many :stats, dependent: :destroy
 
+  validates_uniqueness_of :api_id
+
+
   def win?(game, team)
     if (game.home_team_id == team.id && game.home_team_score > game.visitor_team_score) ||
        (game.visitor_team_id == team.id && game.home_team_score < game.visitor_team_score)
