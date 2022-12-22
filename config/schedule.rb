@@ -17,7 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-set :output, './log/cron.log'
+# set :output, './log/cron.log'
 
 # every 1.minute do
 #   runner "puts 'Hello World !'"
