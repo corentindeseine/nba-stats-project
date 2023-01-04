@@ -235,7 +235,7 @@
                 <p id='card-stat-row'><%= player.average(player.stats, player)[:games_played] %></p>
               </div>
               <div class="team-show-players-card-stat">
-                <p>5 games rating +/- </p>
+                <p>5-avg / 10-avg </p>
                 <% five_game_plus_minus = (player.average(player.stats, player)[:rating_five_games]  - player.average(player.stats, player)[:rating]).round(1) %>
                 <% if player.average(player.stats, player)[:rating_five_games].zero? %>
                   <p> - </p>
