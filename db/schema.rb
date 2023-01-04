@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_22_122932) do
+ActiveRecord::Schema.define(version: 2023_01_04_155632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2022_12_22_122932) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "last_name"
     t.integer "api_id"
+    t.string "image_url"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 

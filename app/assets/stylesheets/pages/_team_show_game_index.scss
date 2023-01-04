@@ -213,7 +213,7 @@
       &-description {
         width: 90%;
         padding: 4px 14px;
-        margin: 18px auto 12px;
+        margin: 6px auto 12px;
         color: white;
         border: 1px solid white;
         border-radius: 12px;
@@ -285,13 +285,16 @@
 
 
 #ten-games-chevron {
-  font-size: 14px;
+  font-size: 20px;
   transition: transform 0.2s;
   margin-left: 12px;
-  border-radius: 4px;
-  border: 1px solid;
   padding: 3px;
   cursor: pointer;
+}
+
+#avatar_player {
+  margin-top: 2rem;
+  margin-bottom: -0.5rem;
 }
 
 
