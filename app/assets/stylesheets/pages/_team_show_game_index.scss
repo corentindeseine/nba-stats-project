@@ -3,7 +3,7 @@
   color: rgb(220,220,220);
   padding: 16px 28px 1px 28px;
   transition: transform 0.6s;
-  border-radius: 12px;
+  border-radius: 8px;
   background: linear-gradient(170deg, #2f3245 45%, #3f435e 90%, #505577 103%);
   box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
 
@@ -15,14 +15,6 @@
   i {
     box-shadow: 0px 0px 0px rgba(0,0,0,0.2)
     ;
-  }
-}
-
-.hover-games-container {
-  transition: transform 0.4s;
-
-  &:hover{
-    transform: scale(1.04);
   }
 }
 
@@ -250,11 +242,11 @@
       }
 
       h3 {
-        margin: 18px 0 0 0;
+        margin: 12px 0 0 0;
       }
 
       i {
-        font-size: 70px;
+        font-size: 132px;
         margin-top: 30px;
         color: rgb(180,180,180);
       }
