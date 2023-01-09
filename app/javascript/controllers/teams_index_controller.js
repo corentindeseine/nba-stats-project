@@ -1,18 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
- static targets = ['logo','card']
+ static targets = ['card']
 
   connect() {
     // Fix problem go back page
     this.cardTargets.forEach((element) => {
-      element.classList.remove('hover-left-cards');
-      element.classList.remove('hover-right-cards');
       element.style.transform = 'rotateX(0) rotateY(0)';
     })
-    this.logoTargets.forEach(element => {
-      element.classList.remove('hover-logo')
-    });
 
     // mousemovecard
 

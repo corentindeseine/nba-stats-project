@@ -83,7 +83,7 @@
     a {
       color: rgb(120,120,120);
       font-family: 'Roboto Condensed', sans-serif;
-      padding: 4px 20px 2px 4px;
+      padding: 4px 20px 4px 8px;
     }
   }
 }
@@ -91,4 +91,14 @@
 
 .menu-open {
   opacity: 100%
+}
+
+#navbar-username {
+  color: #212433;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 4px 20px 0px 8px;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  list-style-type: none;
 }
