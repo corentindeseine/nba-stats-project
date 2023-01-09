@@ -14,6 +14,7 @@
   </div>
   <div class="navbar-menu" data-navbar-target="navbarMenu">
     <% if user_signed_in? %>
+      <li id="navbar-username"> <%= current_user.username %> </li>
       <li class="navbar-menu-item"> <%= link_to "Favorite teams", root_path, class: "dropdown-item" %> </li>
       <li class="navbar-menu-item"> <%= link_to "Favorite players", root_path, class: "dropdown-item" %> </li>
       <li class="navbar-menu-item"> <%= link_to "Player vs Player", player_vs_player_path, class: "dropdown-item" %> </li>

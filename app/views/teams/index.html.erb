@@ -2,7 +2,7 @@
   <div class="teams-container">
     <% @teams.order(:api_id).each do |team| %>
       <%= link_to team_path(team) do %>
-        <div class="teams-card-hover" data-teams-index-target='container'>
+        <div class="teams-card-hover">
           <div class="teams-card" data-action='mouseenter->teams-index#mouseEnter
                                                mouseleave->teams-index#mouseLeave'
                                   data-card-id= "<%= team.api_id %>"

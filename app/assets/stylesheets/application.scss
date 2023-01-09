@@ -70,13 +70,12 @@ ul {
 }
 
 .container-fluid {
-  margin-top: 100px;
 
   @media (min-width: 1200px) {
-    padding: 8px 60px;
+    padding: 110px 60px;
   }
 
   @media (min-width: 1500px) {
-    padding: 16px 280px;
+    padding: 120px 280px;
   }
 }
