@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_09_142123) do
+ActiveRecord::Schema.define(version: 2023_01_09_220427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 2023_01_09_142123) do
     t.index ["visitor_team_id"], name: "index_games_on_visitor_team_id"
   end
 
+  create_table "player_likes", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_player_likes_on_player_id"
+    t.index ["user_id"], name: "index_player_likes_on_user_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "position"
@@ -92,6 +101,15 @@ ActiveRecord::Schema.define(version: 2023_01_09_142123) do
     t.index ["player_id"], name: "index_stats_on_player_id"
   end
 
+  create_table "team_likes", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_team_likes_on_team_id"
+    t.index ["user_id"], name: "index_team_likes_on_user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "abbreviation"
@@ -118,7 +136,11 @@ ActiveRecord::Schema.define(version: 2023_01_09_142123) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "games", "teams", column: "home_team_id"
   add_foreign_key "games", "teams", column: "visitor_team_id"
+  add_foreign_key "player_likes", "players"
+  add_foreign_key "player_likes", "users"
   add_foreign_key "players", "teams"
   add_foreign_key "stats", "games"
   add_foreign_key "stats", "players"
+  add_foreign_key "team_likes", "teams"
+  add_foreign_key "team_likes", "users"
 end
