@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  def home
+    @players = Player.all
+    @stats = Stat.all.select { |stat| stat.game.date == (Date.today - 1).strftime('%Y-%m-%d') && stat.min.positive? }
+  end
 
   def versus
     @players = []

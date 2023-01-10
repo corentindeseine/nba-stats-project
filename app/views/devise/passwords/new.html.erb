@@ -15,11 +15,13 @@
                       input_html: { autocomplete: "email" } %>
         </div>
 
-        <div id='reset-pw'>
+        <div class='informations-btn'>
           <%= f.button :submit, "Reset password instructions" %>
         </div>
       <% end %>
 
-      <%= render "devise/shared/links" %>
+      <div class="informations-btn">
+        <%= link_to "Log in", new_session_path(resource_name) %><br />
+      </div>
   </div>
 </div>

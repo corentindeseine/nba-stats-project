@@ -24,6 +24,10 @@ class Player < ApplicationRecord
     }
   end
 
+  def today_outperform(stat)
+    (stat.rating - stat.player.average(stat.player.stats, stat.player)[:rating]).round(0)
+  end
+
   private
 
   def average_stat(stats, player, param, games_number)
