@@ -4969,12 +4969,10 @@ end
 # active_players.each do |player|
 #   # PARSING IMAGE FROM NBA WEBSITE
 #   url = "https://www.nba.com/player/#{player[0]}"
-#   p url
 #   begin
 #     html_file = URI.open(url).read
 #   rescue OpenURI::HTTPError => error
 #     if error.message == '502 Bad Gateway'
-#       # Traitez l'erreur de la manière souhaitée, par exemple en passant à la prochaine itération de la boucle
 #       next
 #     else
 #       raise error
