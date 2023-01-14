@@ -18,7 +18,11 @@
           <div class="team-show-players-card-rating">
             <p id='player-card-score'><%= player.average(player.stats, player)[:rating].round(0) %></p>
           </div>
-          <i class="fa-solid fa-user"></i>
+          <% if player.image_url.nil? %>
+            <i class="fa-solid fa-user"></i>
+          <% else %>
+            <%= image_tag player.image_url, alt: "Player avatar", width: 190, id: "avatar_player" %>
+          <% end %>
           <h3> <%= player.first_name %> <%= player.last_name %> </h3>
           <h5>
             <% if player.position == 'C' %>
@@ -96,7 +100,11 @@
           <div class="team-show-players-card-rating">
             <p id='player-card-score'><%= player.average(player.stats, player)[:rating].round(0) %></p>
           </div>
-          <i class="fa-solid fa-user"></i>
+          <% if player.image_url.nil? %>
+            <i class="fa-solid fa-user"></i>
+          <% else %>
+            <%= image_tag player.image_url, alt: "Player avatar", width: 190, id: "avatar_player" %>
+          <% end %>
           <h3> <%= player.first_name %> <%= player.last_name %> </h3>
           <h5>
             <% if player.position == 'C' %>
@@ -157,7 +165,7 @@
             </div>
           </div>
         </div>
-      <% end %> 
+      <% end %>
     </div>
   </div>
   <div class="reset-button-container">

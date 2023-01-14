@@ -91,8 +91,6 @@
                               <th>3PM</th>
                               <th>FG3%</th>
                               <th>AST</th>
-                              <th>OFREB</th>
-                              <th>DREB</th>
                               <th>RBD</th>
                               <th>STL</th>
                               <th>BLK</th>
@@ -101,17 +99,15 @@
                           </thead>
                           <tbody>
                               <% game.stats.sort_by { |stat| stat.min }.reverse.map do |stat| %>
-                                <% if game.visitor_team.name == stat.player.team.name %>
+                                <% if game.visitor_team.name == stat.player.team.name && stat.min.positive? %>
                                   <tr>
-                                      <td style='text-align:left'> <%= stat.player.first_name %> <%= stat.player.last_name %> </td>
+                                      <td style='text-align:left'> <%= stat.player.first_name.first %>. <%= stat.player.last_name %> </td>
                                       <td> <%= stat.min %> </td>
                                       <td> <%= stat.pts %> </td>
-                                      <td> <%= (stat.fg_pct).round(1) %></td>
+                                      <td> <%= (stat.fg_pct).to_i %></td>
                                       <td> <%= stat.fg3_made %> </td>
-                                      <td> <%= (stat.fg3_pct).round(1) %></td>
+                                      <td> <%= (stat.fg3_pct).to_i %></td>
                                       <td> <%= stat.ast %> </td>
-                                      <td> <%= stat.reb - stat.dreb %> </td>
-                                      <td> <%= stat.dreb %> </td>
                                       <td> <%= stat.reb %> </td>
                                       <td> <%= stat.stl %> </td>
                                       <td> <%= stat.blk %> </td>
@@ -134,8 +130,6 @@
                               <th>3PM</th>
                               <th>FG3%</th>
                               <th>AST</th>
-                              <th>OFREB</th>
-                              <th>DREB</th>
                               <th>RBD</th>
                               <th>STL</th>
                               <th>BLK</th>
@@ -144,17 +138,15 @@
                           </thead>
                           <tbody>
                               <% game.stats.sort_by { |stat| stat.min }.reverse.map do |stat| %>
-                                <% if game.home_team.name == stat.player.team.name %>
+                                <% if game.home_team.name == stat.player.team.name && stat.min.positive? %>
                                     <tr>
-                                      <td style='text-align:left'> <%= stat.player.first_name %> <%= stat.player.last_name %> </td>
+                                      <td style='text-align:left'> <%= stat.player.first_name.first %>. <%= stat.player.last_name %> </td>
                                       <td> <%= stat.min %> </td>
                                       <td> <%= stat.pts %> </td>
-                                      <td> <%= (stat.fg_pct).round(1) %></td>
+                                      <td> <%= (stat.fg_pct).to_i %></td>
                                       <td> <%= stat.fg3_made %> </td>
-                                      <td> <%= (stat.fg3_pct).round(1) %></td>
+                                      <td> <%= (stat.fg3_pct).to_i %></td>
                                       <td> <%= stat.ast %> </td>
-                                      <td> <%= stat.reb - stat.dreb %> </td>
-                                      <td> <%= stat.dreb %> </td>
                                       <td> <%= stat.reb %> </td>
                                       <td> <%= stat.stl %> </td>
                                       <td> <%= stat.blk %> </td>
