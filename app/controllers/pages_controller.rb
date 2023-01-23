@@ -1,17 +1,18 @@
 class PagesController < ApplicationController
   def home
     @players = Player.all
-    @stats = Stat.all.select { |stat| stat.game.date == (Date.today - 1).strftime('%Y-%m-%d') && stat.min.positive? }
+    @stats = Stat.all.select { |stat| stat.game.date == '2023-01-18' && stat.min.positive? }
+    # (Date.today - 1).strftime('%Y-%m-%d')
   end
 
   def versus
     @players = []
-    @search_player_one = params['search']
+    @search_player = params['search']
 
     return unless @search_player_one.present?
 
-    @player_one = @search_player_one['player_one']
-    @player_two = @search_player_one['player_two']
+    @player_one = @search_player['player_one']
+    @player_two = @search_player['player_two']
     @players.push(Player.find_by(last_name: @player_one), Player.find_by(last_name: @player_two))
   end
 
