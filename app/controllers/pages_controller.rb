@@ -6,14 +6,16 @@ class PagesController < ApplicationController
   end
 
   def versus
+    @list_players = Player.all.order(:last_name).reject { |player| player.average(player.stats, player)[:min].zero? }
+    @list_active_players = @list_players.map { |p| [p.full_name, p.id] }
     @players = []
     @search_player = params['search']
 
     return unless @search_player.present?
 
-    @player_one = @search_player['player_one']
-    @player_two = @search_player['player_two']
-    @players.push(Player.find_by(last_name: @player_one), Player.find_by(last_name: @player_two))
+    player_one_id = @search_player['player_one_id']
+    player_two_id = @search_player['player_two_id']
+    @players.push(Player.find(player_one_id.to_i), Player.find(player_two_id.to_i))
   end
 
   def favorite

@@ -1,8 +1,9 @@
 .versus {
   &-container {
+    height: 100%;
 
     @media (min-width: 1200px) {
-      padding: 8px 40px;
+      padding: 8px 130px;
     }
 
     @media (min-width: 1500px) {
@@ -11,8 +12,25 @@
   }
 
   &-form-container {
-    margin-top: 100px;
-  }
+    margin-top: 8rem;
+
+      form {
+        display: flex;
+        justify-content: space-between;
+
+        select {
+          background: none;
+          border-radius: 24px;
+          padding-left: 36px;
+          color: rgb(200,200,200);
+          font-family: 'Roboto Condensed', sans-serif;
+          font-style: italic;
+          align-items: center;
+          text-align: center;
+          font-size: 18px;
+        }
+      }
+    }
 
   &-players-container {
     display: flex;
@@ -24,16 +42,32 @@
   &-player-one-container, &-player-two-container {
     width: 20%
   }
+
+  &-logo-vs-container{
+    img {
+      width: 10rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 }
 
-.reset-button-container {
+.versus-button-container {
   position: fixed;
-  bottom: 6%;
+  bottom: 5%;
   left: 50%;
-  margin-left: -75px;
+  transform: translateX(-50%);
   background: linear-gradient(170deg, #2f3245 45%, #3f435e 90%, #505577 103%);
-  padding: 6px 12px;
-  border-radius: 16px;
+  padding: 8px 24px;
+  border-radius: 28px;
+  font-size: 24px;
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 20px;
 
   &:hover {
     border: 1px solid rgb(180,180,180);

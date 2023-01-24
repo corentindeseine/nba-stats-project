@@ -1,11 +1,34 @@
-<div class="versus-container">
+<div class="versus-container" data-controller='versus'>
   <div class="versus-form-container">
     <%= simple_form_for :search, url: player_vs_player_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <%= f.input :player_one, :label => false, placeholder: "Select player one" %>
-      <%= f.input :player_two, :label => false, placeholder: "Select player two" %>
-      <%= f.submit "Confirm", class: "" %>
+      <%= f.input :player_one_id,
+                  :label => false,
+                  as: :select,
+                  collection: @list_active_players,
+                  prompt: "SELECT PLAYER ONE",
+                  input_html: { data: {versus_target: "playerOneForm"} } %>
+
+
+      <%= f.input :player_two_id,
+                  :label => false,
+                  as: :select,
+                  collection: @list_active_players,
+                  prompt: "SELECT PLAYER TWO",
+                  input_html: { data: {versus_target: "playerTwo"} } %>
+
+      <%= f.submit "CONFIRM PLAYERS", class: "versus-button-container" %>
     <% end %>
   </div>
+
+  <div class="versus-logo-vs-container">
+    <%= image_tag "versus.png", class: "", alt: "versus" %>
+  </div>
+    <p data-versus-target='playerOne'> 'Hello'</p>
+</div>
+
+
+
+
 
   <div class="versus-players-container">
     <div class="versus-player-one-container">
@@ -168,7 +191,6 @@
       <% end %>
     </div>
   </div>
-  <div class="reset-button-container">
+  <div class="versus-button-container d-none">
     <%= link_to "RESET PLAYERS", player_vs_player_path %>
   </div>
-</div>

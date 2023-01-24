@@ -70,7 +70,8 @@
   &-outperformers {
     &-container {
       position: absolute;
-      top: 20%;
+      top: 50%;
+      transform: translateY(-50%);
       right: 8%;
       width: 45%;
       background: linear-gradient(90deg, #444965 0%, #3f445d 78%, #373c54 103%);

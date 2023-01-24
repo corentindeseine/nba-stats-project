@@ -4,6 +4,10 @@ class Player < ApplicationRecord
 
   validates_uniqueness_of :api_id
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def average(stats, player)
     {
       min: average_stat(stats, player, 'min', 10),
