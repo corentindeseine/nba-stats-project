@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @players = []
     @search_player = params['search']
 
-    return unless @search_player_one.present?
+    return unless @search_player.present?
 
     @player_one = @search_player['player_one']
     @player_two = @search_player['player_two']
