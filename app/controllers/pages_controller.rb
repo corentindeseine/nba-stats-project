@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def home
     @players = Player.all
     @stats = Stat.all.select { |stat| stat.game.date == '2023-01-18' && stat.min.positive? }
