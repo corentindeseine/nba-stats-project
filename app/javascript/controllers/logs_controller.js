@@ -22,7 +22,7 @@ export default class extends Controller {
     this.cardTarget.style.transitionDuration = '.05s'
   }
 
-  mouseLeave(event) {
+  mouseLeave() {
     this.cardTarget.style.transitionDuration = '1s'
     this.cardTarget.style.transform = 'rotateX(0) rotateY(0)';
   }

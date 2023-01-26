@@ -1,25 +1,104 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
- static targets = ["playerOneForm",'playerOne','playerTwo']
+ static targets = ['playerOneForm',
+                   'playerOneName',
+                   'playerOneImage',
+                   'playerOneTeam',
+                   'playerOnePosition',
+
+                   'playerTwoForm',
+                   'playerTwoName',
+                   'playerTwoImage',
+                   'playerTwoTeam',
+                   'playerTwoPosition',
+
+                   'playerOneCard',
+                   'playerTwoCard']
 
   connect() {
-    console.log(this.playerOneTarget.innerHTML)
-    var selectedPlayerId;
+
+    // mousemovecard
+
+    this.playerOneCardTarget.style.transform = 'rotateX(0) rotateY(0)';
+    this.playerOneCardTarget.addEventListener('mousemove', (e) => {
+      const force = 10;
+      const offsetX = (this.playerOneCardTarget.offsetWidth / 2 - e.layerX) / force;
+      const offsetY = - (this.playerOneCardTarget.offsetHeight / 2 - e.layerY) / force;
+
+      this.playerOneCardTarget.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
+    })
+
+
+    this.playerTwoCardTarget.style.transform = 'rotateX(0) rotateY(0)';
+    this.playerTwoCardTarget.addEventListener('mousemove', (e) => {
+      const force = 10;
+      const offsetX = (this.playerTwoCardTarget.offsetWidth / 2 - e.layerX) / force;
+      const offsetY = - (this.playerTwoCardTarget.offsetHeight / 2 - e.layerY) / force;
+
+      this.playerTwoCardTarget.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
+    })
+
+    // AJAX
+
+    var playerOneInformations = { name: this.playerOneNameTarget,
+                                  team: this.playerOneTeamTarget,
+                                  position: this.playerOnePositionTarget,
+                                  image: this.playerOneImageTarget
+                                }
+
+    var playerTwoInformations = { name: this.playerTwoNameTarget,
+                                  team: this.playerTwoTeamTarget,
+                                  position: this.playerTwoPositionTarget,
+                                  image: this.playerTwoImageTarget
+                                }
+
+    const playerOneCard = this.playerOneCardTarget
+    const playerTwoCard = this.playerTwoCardTarget
+
 
     this.playerOneFormTarget.addEventListener("change", function() {
-      selectedPlayerId = this.value;
-      console.log(this.value);
+      getPlayersInformations(playerOneInformations, this.value)
+      playerOneCard.classList.remove('d-none')
+    });
 
-      fetch(`/players/${selectedPlayerId}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-        // // Utilisez les données pour afficher l'image du joueur et les autres informations sur la vue "versus"
-        // document.querySelector("#player-image").src = data.image_url;
-        // document.querySelector("#player-team").innerHTML = data.team.name;
-        // document.querySelector("#player-average-pts").innerHTML = data.average_pts;
-      });
+    this.playerTwoFormTarget.addEventListener("change", function() {
+      getPlayersInformations(playerTwoInformations, this.value)
+      playerTwoCard.classList.remove('d-none')
     });
   }
+
+  mouseEnter() {
+    this.playerOneCardTarget.style.transitionDuration = '.05s'
+    this.playerTwoCardTarget.style.transitionDuration = '.05s'
+  }
+
+  mouseLeave() {
+    this.playerOneCardTarget.style.transitionDuration = '1s'
+    this.playerOneCardTarget.style.transform = 'rotateX(0) rotateY(0)';
+
+    this.playerTwoCardTarget.style.transitionDuration = '1s'
+    this.playerTwoCardTarget.style.transform = 'rotateX(0) rotateY(0)';
+  }
+}
+
+
+const getPlayersInformations = (playerInformations, id) => {
+  fetch(`/players/${id}`)
+  .then(response => response.json())
+  .then(data => {
+    playerInformations.image.src  = data.image_url;
+    playerInformations.name.innerHTML = '53';
+    playerInformations.team.innerHTML = data.team.name
+
+    if (data.position === 'G') {
+      playerInformations.position.innerHTML = 'Guard'
+    } else if (data.position === 'F') {
+      playerInformations.position.innerHTML = 'Forward'
+    } else if (data.position === 'C') {
+      playerInformations.position.innerHTML = 'Center'
+    } else {
+      playerInformations.position.innerHTML = data.position
+    }
+  });
 }
