@@ -14,9 +14,24 @@ export default class extends Controller {
                    'playerTwoPosition',
 
                    'playerOneCard',
-                   'playerTwoCard']
+                   'playerTwoCard',
+
+                    'playerCardAfter']
 
   connect() {
+
+    // this.playerOneFormTarget.select2({
+    //   width: '100%',
+    //   allowClear: true,
+    //   minimumResultsForSearch: -1
+    // });
+
+
+    // // Appearance of card and table after submit
+
+    //   this.playerCardAfterTargets.forEach(element => {
+    //     element.classList.add('versus-player-card-after')
+    //   });
 
     // mousemovecard
 
@@ -39,7 +54,7 @@ export default class extends Controller {
       this.playerTwoCardTarget.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
     })
 
-    // AJAX
+    // AJAX POUR RECUPERER LA CARD DU PLAYER AVANT ENVOIE DU SEARCH
 
     var playerOneInformations = { name: this.playerOneNameTarget,
                                   team: this.playerOneTeamTarget,

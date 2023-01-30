@@ -1,6 +1,11 @@
 <div class="versus-container" data-controller='versus'>
   <div class="versus-container-before-submit <%= 'd-none' unless @players.empty? %>">
     <div class="versus-form-container">
+      <% if flash[:error] %>
+        <script>
+         alert("<%= flash[:error] %>");
+         </script>
+      <% end %>
       <%= simple_form_for :search, url: player_vs_player_path, method: "GET", html: { class: 'form-inline' } do |f| %>
         <%= f.input :player_one_id,
                     :label => false,
@@ -79,7 +84,8 @@
   <div class="versus-container-after-submit <%= 'd-none' if @players.empty? %>">
     <% unless @players.empty? %>
       <% player = @players.first %>
-      <div class ="team-show-players-card versus-player-card-after">
+      <div class ="team-show-players-card versus-player-card-start"
+           data-versus-target='playerCardAfter'>
         <div class="team-show-players-card-logo-container">
           <%= cl_image_tag player.team.logo.key %>
         </div>
@@ -163,7 +169,8 @@
 
     <% unless @players.empty? %>
       <% player = @players.last %>
-      <div class ="team-show-players-card versus-player-card-after">
+      <div class ="team-show-players-card versus-player-card-start"
+           data-versus-target='playerCardAfter'>
         <div class="team-show-players-card-logo-container">
           <%= cl_image_tag player.team.logo.key %>
         </div>

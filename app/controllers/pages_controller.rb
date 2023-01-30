@@ -18,6 +18,8 @@ class PagesController < ApplicationController
     player_one_id = @search_player['player_one_id']
     player_two_id = @search_player['player_two_id']
     @players.push(Player.find(player_one_id.to_i), Player.find(player_two_id.to_i))
+  # flash[:error] = "Please select two players"
+  # render 'pages/versus'
   end
 
   def favorite
