@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import $ from 'jquery';
 
 export default class extends Controller {
  static targets = ['playerOneForm',
@@ -20,10 +21,12 @@ export default class extends Controller {
 
   connect() {
 
-    // this.playerOneFormTarget.select2({
-    //   width: '100%',
-    //   allowClear: true,
-    //   minimumResultsForSearch: -1
+    // AJOUT D'UNE ZONE DE TEXTE DANS LES INPUT DU FORM
+
+    // $('.player-one-input').select2({
+    //     width: '100%',
+    //     allowClear: true,
+    //     minimumResultsForSearch: -1
     // });
 
 
@@ -32,27 +35,6 @@ export default class extends Controller {
     //   this.playerCardAfterTargets.forEach(element => {
     //     element.classList.add('versus-player-card-after')
     //   });
-
-    // mousemovecard
-
-    this.playerOneCardTarget.style.transform = 'rotateX(0) rotateY(0)';
-    this.playerOneCardTarget.addEventListener('mousemove', (e) => {
-      const force = 10;
-      const offsetX = (this.playerOneCardTarget.offsetWidth / 2 - e.layerX) / force;
-      const offsetY = - (this.playerOneCardTarget.offsetHeight / 2 - e.layerY) / force;
-
-      this.playerOneCardTarget.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
-    })
-
-
-    this.playerTwoCardTarget.style.transform = 'rotateX(0) rotateY(0)';
-    this.playerTwoCardTarget.addEventListener('mousemove', (e) => {
-      const force = 10;
-      const offsetX = (this.playerTwoCardTarget.offsetWidth / 2 - e.layerX) / force;
-      const offsetY = - (this.playerTwoCardTarget.offsetHeight / 2 - e.layerY) / force;
-
-      this.playerTwoCardTarget.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
-    })
 
     // AJAX POUR RECUPERER LA CARD DU PLAYER AVANT ENVOIE DU SEARCH
 
@@ -81,6 +63,28 @@ export default class extends Controller {
       getPlayersInformations(playerTwoInformations, this.value)
       playerTwoCard.classList.remove('d-none')
     });
+
+
+    // EFFET CARD MOUSE MOVE
+
+    this.playerOneCardTarget.style.transform = 'rotateX(0) rotateY(0)';
+    this.playerOneCardTarget.addEventListener('mousemove', (e) => {
+      const force = 10;
+      const offsetX = (this.playerOneCardTarget.offsetWidth / 2 - e.layerX) / force;
+      const offsetY = - (this.playerOneCardTarget.offsetHeight / 2 - e.layerY) / force;
+
+      this.playerOneCardTarget.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
+    })
+
+
+    this.playerTwoCardTarget.style.transform = 'rotateX(0) rotateY(0)';
+    this.playerTwoCardTarget.addEventListener('mousemove', (e) => {
+      const force = 10;
+      const offsetX = (this.playerTwoCardTarget.offsetWidth / 2 - e.layerX) / force;
+      const offsetY = - (this.playerTwoCardTarget.offsetHeight / 2 - e.layerY) / force;
+
+      this.playerTwoCardTarget.style.transform = `rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
+    })
   }
 
   mouseEnter() {

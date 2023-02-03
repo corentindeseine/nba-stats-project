@@ -6,8 +6,8 @@
 //= require jquery
 //= require popper
 //= require turbolinks
-//= require bootstrap
 //= require_tree.
+//= require bootstrap
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -19,5 +19,3 @@ import 'controllers'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-

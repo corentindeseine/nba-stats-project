@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["team","game","player","navbarMenu"]
+
   static values = { controller: String }
 
   connect() {

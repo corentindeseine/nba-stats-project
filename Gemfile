@@ -43,7 +43,6 @@ gem 'devise'
 # Cloudinary / image
 gem "cloudinary"
 
-
 # Running data every morning
 # gem 'whenever', require: false
 

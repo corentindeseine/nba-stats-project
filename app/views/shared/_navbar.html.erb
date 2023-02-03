@@ -12,6 +12,8 @@
   <div>
       <i class="fa-solid fa-user" data-action="click->navbar#showMenu"></i>
   </div>
+
+
   <div class="navbar-menu" data-navbar-target="navbarMenu">
     <% if user_signed_in? %>
       <li id="navbar-username"> <%= current_user.username %> </li>
@@ -23,4 +25,8 @@
       <li class="navbar-menu-item"> <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %> </li>
     <% end %>
   </div>
+
+
+
+
 </div>
