@@ -11,13 +11,11 @@
                     :label => false,
                     as: :select,
                     collection: @list_active_players,
-                    prompt: "SELECT PLAYER ONE",
                     input_html: { data: {versus_target: "playerOneForm"}, class: "player-one-input" } %>
         <%= f.input :player_two_id,
                     :label => false,
                     as: :select,
                     collection: @list_active_players,
-                    prompt: "SELECT PLAYER TWO",
                     input_html: { data: {versus_target: "playerTwoForm"} } %>
         <%= f.submit "CONFIRM PLAYERS", class: "versus-button-container",
                                         input_html: {class: "btn-versus-confirm"} %>

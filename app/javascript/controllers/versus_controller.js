@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import $ from 'jquery';
+import 'select2';
 
 export default class extends Controller {
  static targets = ['playerOneForm',
@@ -21,22 +22,12 @@ export default class extends Controller {
 
   connect() {
 
-    // AJOUT D'UNE ZONE DE TEXTE DANS LES INPUT DU FORM
-
-    // $('.player-one-input').select2({
-    //     width: '100%',
-    //     allowClear: true,
-    //     minimumResultsForSearch: -1
-    // });
 
 
-    // // Appearance of card and table after submit
-
-    //   this.playerCardAfterTargets.forEach(element => {
-    //     element.classList.add('versus-player-card-after')
-    //   });
-
-    // AJAX POUR RECUPERER LA CARD DU PLAYER AVANT ENVOIE DU SEARCH
+    $('#search_player_one_id').select2({
+      placeholder: 'SELECT PLAYER ONE',
+      minimumResultsForSearch: 1
+    });
 
     var playerOneInformations = { name: this.playerOneNameTarget,
                                   team: this.playerOneTeamTarget,

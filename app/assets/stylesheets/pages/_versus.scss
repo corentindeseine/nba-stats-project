@@ -157,6 +157,31 @@
   }
 }
 
+
+.select2-container--default .select2-selection--single {
+  background: none !important;
+  border-radius: 24px !important;
+  padding-left: 36px !important;
+  color: white !important;
+  font-family: 'Roboto Condensed', sans-serif !important;
+  font-style: italic !important;
+  text-align: center !important;
+  font-size: 20px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: white !important;
+}
+
+.select2-container--open .select2-dropdown--below  {
+  background: none;
+  border: 1px solid white;
+  width: 279.5px;
+  border-radius: 17px;
+  position: absolute;
+  top: 12px;
+}
+
 img[src=""] {
   display: none;
 }

@@ -8,6 +8,7 @@
 //= require turbolinks
 //= require_tree.
 //= require bootstrap
+//= require select2
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
