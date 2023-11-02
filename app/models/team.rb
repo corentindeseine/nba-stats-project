@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
-  has_many :players
+  has_many :players, dependent: :destroy
   has_many :home_games, class_name: 'Game', foreign_key: 'home_team_id'
   has_many :visitor_games, class_name: 'Game', foreign_key: 'visitor_team_id'
   has_one_attached :logo
