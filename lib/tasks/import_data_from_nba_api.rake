@@ -4,9 +4,6 @@ require "nokogiri"
 require_relative '../nba_utils'
 require_relative '../players_data'
 
-
-
-
 namespace :nba do
   desc "Import NBA team data from API"
   task import_teams: :environment do
