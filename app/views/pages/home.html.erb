@@ -1,51 +1,52 @@
 <div class="container-home" data-controller='home-animation'>
   <div class="home-background">
-    <%# <%= image_tag 'https://res.cloudinary.com/dj1mlcnes/image/upload/v1667393647/nba-project/basketball-2560x1440_2_gcp5sl.jpg', alt: "background basket"%>
-
     <div class="home-menu-list">
       <%= render 'shared/home_menu', title: 'Games reviews'  %>
       <%= render 'shared/home_menu', title: 'Players stats'  %>
       <%= render 'shared/home_menu', title: 'Players VS', data: {home_animation_target: 'versus'}  %>
       <%= render 'shared/home_menu', title: 'Teams' %>
     </div>
-    <div class="home-outperformers-container">
-      <h1>Last night outperfomers</h1>
-      <div class="home-outperformers-table">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Team</th>
-              <th class="center-column">Player</th>
-              <th>Min</th>
-              <th>Pts</th>
-              <th>Ast</th>
-              <th>Reb</th>
-              <th>Score</th>
-              <th id='outperform'>Outperformance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @stats.sort_by{ |stat| stat.player.today_outperform(stat) }.reverse.first(10).each_with_index do |stat, index| %>
+
+    <!--
+      <div class="home-outperformers-container">
+        <h1>Last night outperfomers</h1>
+        <div class="home-outperformers-table">
+          <table>
+            <thead>
               <tr>
-                <td><%= index + 1 %>.</td>
-                <td><%= stat.player.team.abbreviation %></td>
-                <td><%= stat.player.first_name.first %>. <%= stat.player.last_name %></td>
-                <td><%= stat.min %></td>
-                <td><%= stat.pts %></td>
-                <td><%= stat.ast %></td>
-                <td><%= stat.reb %></td>
-                <td><%= stat.rating %></td>
-                <td id='outperform-number-container'>
-                  <p id ="outperfom-number">
-                    <%= stat.player.today_outperform(stat) %>
-                  </p>
-                </td>
+                <th>#</th>
+                <th>Team</th>
+                <th class="center-column">Player</th>
+                <th>Min</th>
+                <th>Pts</th>
+                <th>Ast</th>
+                <th>Reb</th>
+                <th>Score</th>
+                <th id='outperform'>Outperformance</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @stats.sort_by{ |stat| stat.player.today_outperform(stat) }.reverse.first(10).each_with_index do |stat, index| %>
+                <tr>
+                  <td><%= index + 1 %>.</td>
+                  <td><%= stat.player.team.abbreviation %></td>
+                  <td><%= stat.player.first_name.first %>. <%= stat.player.last_name %></td>
+                  <td><%= stat.min %></td>
+                  <td><%= stat.pts %></td>
+                  <td><%= stat.ast %></td>
+                  <td><%= stat.reb %></td>
+                  <td><%= stat.rating %></td>
+                  <td id='outperform-number-container'>
+                    <p id ="outperfom-number">
+                      <%= stat.player.today_outperform(stat) %>
+                    </p>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    -->
   </div>
 </div>
