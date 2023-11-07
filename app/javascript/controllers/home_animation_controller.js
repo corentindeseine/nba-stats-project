@@ -21,7 +21,6 @@ export default class extends Controller {
   }
 
   mouseOver(event) {
-    console.log('hello')
     if (event.currentTarget.innerHTML === 'Games reviews') {
       this.games_reviewsTarget.classList.remove('invisible');
       this.games_reviewsTarget.classList.add('ball-hover');

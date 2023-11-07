@@ -66,43 +66,26 @@
       }
     }
   }
+}
 
-  &-outperformers {
-    &-container {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 8%;
-      width: 45%;
-      background: linear-gradient(90deg, #444965 0%, #3f445d 78%, #373c54 103%);
-      box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
-      padding: 22px;
-      padding-top: 12px;
-      border-radius: 24px;
+.nba-standings-container {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  right: 8%;
+  width: 45%;
+  height: 80%;
+  background: linear-gradient(90deg, #444965 0%, #3f445d 78%, #373c54 103%);
+  box-shadow: 0px 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
+  padding: 22px;
+  padding-top: 12px;
+  border-radius: 24px;
 
-      h1 {
-        font-size: 60px;
-        text-align: center;
-        margin-bottom: 30px;
-      }
-    }
-
-    &-table {
-      display: flex;
-      justify-content: space-evenly;
-      height: 40%;
-
-      table {
-        text-align: start;
-        width: 90%;
-      }
-
-      thead {
-        border-bottom: 1px solid white;
-      }
-    }
+  h1 {
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 30px;
   }
-
 }
 
 .center-column {
