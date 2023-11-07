@@ -4,11 +4,15 @@
     <%= link_to(teams_path) do %>
       <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
     <% end %>
-  <% elsif title == 'Games' %>
+  <% elsif title == 'Games reviews' %>
     <%= link_to(games_path) do %>
       <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
     <% end %>
   <% elsif title == 'Players stats' %>
+    <%= link_to(players_path) do %>
+      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
+    <% end %>
+  <% elsif title == 'Fantasy league' %>
     <%= link_to(players_path) do %>
       <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
     <% end %>
