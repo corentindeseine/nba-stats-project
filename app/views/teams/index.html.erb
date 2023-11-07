@@ -1,10 +1,9 @@
-<div class="container-fluid" data-controller='teams-index'>
+<div class="container-fluid">
   <div class="teams-container">
     <% @teams.order(:api_id).each do |team| %>
       <%= link_to team_path(team) do %>
         <div class="teams-card-hover">
-          <div class="teams-card" data-action='mouseenter->teams-index#mouseEnter
-                                               mouseleave->teams-index#mouseLeave'
+          <div class="teams-card" data-action='mouseenter->teams-index#mouseEnter mouseleave->teams-index#mouseLeave'
                                   data-card-id= "<%= team.api_id %>"
                                   data-teams-index-target='card'>
             <h3> <%= team.name %> </h3>
@@ -26,8 +25,14 @@
                 <h4 style='margin-bottom:20px'>Best players</h4>
                 <% team.sort_players(team, :rating).first(3).each do |player| %>
                   <div class="teams-card-score-player">
-                  <p id="teams-card-player-name"> <%= player.first_name %> <%= player.last_name %> </p>
-                  <p id="teams-card-score">  <%= player.average(player.stats, player)[:rating].round(0) %>  </p>
+                    <% if player.image_url %>
+                      <%= image_tag player.image_url, alt: "Player avatar", width: 50, style: "border-radius: 50%;" %>
+                    <% else %>
+                      <i class="fa-solid fa-user" id="no-avatar"></i>
+                    <% end %>
+
+                    <p id="teams-card-player-name"><%= player.first_name %> <%= player.last_name %> </p>
+                    <p id="teams-card-score">  <%= player.average(player.stats, player)[:rating].round(0) %>  </p>
                   </div>
                 <% end %>
               </div>

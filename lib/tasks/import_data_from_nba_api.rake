@@ -121,8 +121,6 @@ namespace :nba do
   end
 
   desc "Import stats data from API"
-
-
   task import_stats_from_last_month: :environment do
     start_date = (Date.today - 24).strftime('%Y-%m-%d')
     end_date = Time.now.strftime('%Y-%m-%d')

@@ -51,7 +51,7 @@
     &-score-player {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
     }
 
     &-players-container {
@@ -119,4 +119,12 @@
 #teams-card-player-name {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 18px;
+}
+
+
+#no-avatar {
+  font-size: 25px;
+  border-radius: 50%;
+  width: 20%;
+  text-align: center;
 }
