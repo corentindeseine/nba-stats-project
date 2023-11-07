@@ -30,9 +30,8 @@
                     <% else %>
                       <i class="fa-solid fa-user" id="no-avatar"></i>
                     <% end %>
-
-                    <p id="teams-card-player-name"><%= player.first_name %> <%= player.last_name %> </p>
-                    <p id="teams-card-score">  <%= player.average(player.stats, player)[:rating].round(0) %>  </p>
+                    <p id="teams-card-player-name"> <%= player.first_name %> <%= player.last_name %> </p>
+                    <p id="teams-card-score"> <%= player.average(player.stats, player)[:rating].round(0) %>  </p>
                   </div>
                 <% end %>
               </div>
