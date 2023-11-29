@@ -1,16 +1,33 @@
 <div class="container-home" data-controller='home-animation'>
   <div class="home-background">
     <div class="home-menu-list">
-      <%= render 'shared/home_menu', title: 'Teams' %>
-      <%= render 'shared/home_menu', title: 'Games reviews'  %>
-      <%= render 'shared/home_menu', title: 'Players stats'  %>
-      <%= render 'shared/home_menu', title: 'Players VS', data: {home_animation_target: 'versus'}  %>
-      <%= render 'shared/home_menu', title: 'Fantasy League'  %>
+      <% menu_items = [
+        { title: 'Teams', path: teams_path },
+        { title: 'Games reviews', path: games_path },
+        { title: 'Players stats', path: players_path },
+        { title: 'Players VS', path: player_vs_player_path, data: { home_animation_target: 'versus' } },
+        { title: 'Fantasy League', path: players_path }
+      ] %>
+
+      <% menu_items.each do |item| %>
+        <%= render 'shared/home_menu', title: item[:title], path: item[:path], data: item[:data] %>
+      <% end %>
     </div>
 
     <div class="nba-standings-container">
       <h1>NBA Standings 2023-24</h1>
+      <div class="d-flex">
+        <div class="western-conference-standings">
+          <% @western_teams.each_with_index do |team, index|%>
+            <div> <%= index + 1 %>. <%= team.name.truncate(20) %> //  W<%= team.win_lose_counter[:win] %> - D<%= team.win_lose_counter[:lose] %> </div>
+          <% end %>
+        </div>
+        <div style='margin-left:32px' class="eastern-conference-standings">
+          <% @eastern_teams.each_with_index do |team, index|%>
+            <div> <%= index + 1 %>. <%= team.name.truncate(20) %> //  W<%= team.win_lose_counter[:win] %> - D<%= team.win_lose_counter[:lose] %> </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>

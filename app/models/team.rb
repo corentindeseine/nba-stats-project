@@ -4,11 +4,30 @@ class Team < ApplicationRecord
   has_many :visitor_games, class_name: 'Game', foreign_key: 'visitor_team_id'
   has_one_attached :logo
 
-  def past_games(team)
-    (team.home_games + team.visitor_games).sort_by { |e| e[:date] }.reverse.reject { |game| game.home_team_score.zero? }
+  def past_games
+    (home_games + visitor_games).sort_by { |game| game[:date] }.reverse.reject { |game| game.home_team_score.zero? }
   end
 
-  def sort_players(team, stat)
-    team.players.each.sort_by { |player| player.average(player.stats, player)[stat] }.reverse
+  def sort_players(stat)
+    players.sort_by { |player| player.average(player.stats, player)[stat] }.reverse
+  end
+
+  def all_games
+    return home_games + visitor_games
+  end
+
+  def win_lose_counter
+    win_lose_counter = {win: 0, lose: 0}
+    all_games.each {|game| game.win?(game,self) ? win_lose_counter[:win] += 1 : win_lose_counter[:lose] += 1 }
+    return win_lose_counter
+  end
+
+  def self.split_by_conferences
+    teams = Team.all # Remplacez par la méthode que vous utilisez pour récupérer toutes les équipes
+
+    east_teams = teams.select { |team| team.conference == 'East' }
+    west_teams = teams.select { |team| team.conference == 'West' }
+
+    { eastern_conference: east_teams, western_conference: west_teams }
   end
 end

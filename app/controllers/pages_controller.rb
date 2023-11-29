@@ -2,9 +2,10 @@ class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def home
-    @players = Player.all
-    @stats = Stat.all.select { |stat| stat.game.date == '2023-01-18' && stat.min.positive? }
-    # (Date.today - 1).strftime('%Y-%m-%d')
+    teams = Team.all.split_by_conferences
+    @western_teams = teams[:western_conference].sort_by { |team| team.win_lose_counter[:win] }.reverse
+    @eastern_teams = teams[:eastern_conference].sort_by { |team| team.win_lose_counter[:win] }.reverse
+
   end
 
   def versus
@@ -18,8 +19,8 @@ class PagesController < ApplicationController
     player_one_id = @search_player['player_one_id']
     player_two_id = @search_player['player_two_id']
     @players.push(Player.find(player_one_id.to_i), Player.find(player_two_id.to_i))
-  # flash[:error] = "Please select two players"
-  # render 'pages/versus'
+    # flash[:error] = "Please select two players"
+    # render 'pages/versus'
   end
 
   def favorite

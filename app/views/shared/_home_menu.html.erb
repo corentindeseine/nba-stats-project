@@ -1,24 +1,6 @@
 <div class="home-menu-list-item">
-  <i class="fa-solid fa-basketball invisible" data-home-animation-target='<%=title.split(' ').join('_').downcase%>'></i>
-  <% if title == 'Teams' %>
-    <%= link_to(teams_path) do %>
-      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
-    <% end %>
-  <% elsif title == 'Games reviews' %>
-    <%= link_to(games_path) do %>
-      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
-    <% end %>
-  <% elsif title == 'Players stats' %>
-    <%= link_to(players_path) do %>
-      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
-    <% end %>
-  <% elsif title == 'Fantasy League' %>
-    <%= link_to(players_path) do %>
-      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
-    <% end %>
-  <% else %>
-    <%= link_to(player_vs_player_path) do %>
-      <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
-    <% end %>
+  <i class="fa-solid fa-basketball invisible" data-home-animation-target='<%= title.split(' ').join('_').downcase %>'></i>
+  <%= link_to(path) do %>
+    <p data-action='mouseover->home-animation#mouseOver mouseout->home-animation#mouseOut'><%= title %></p>
   <% end %>
 </div>
