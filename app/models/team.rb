@@ -23,7 +23,7 @@ class Team < ApplicationRecord
   end
 
   def self.split_by_conferences
-    teams = Team.all # Remplacez par la méthode que vous utilisez pour récupérer toutes les équipes
+    teams = Team.all
 
     east_teams = teams.select { |team| team.conference == 'East' }
     west_teams = teams.select { |team| team.conference == 'West' }
