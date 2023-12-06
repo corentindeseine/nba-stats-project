@@ -13,7 +13,7 @@
             <div class="teams-card-description-container">
               <h4> Last five games</h4>
               <div class='teams-card-score-container'>
-              <% team.past_games(team).first(5).each do |game| %>
+              <% team.past_games.first(5).each do |game| %>
                 <% if game.win?(game,team) %>
                   <i class="fa-solid fa-check"></i>
                 <% else %>
@@ -23,7 +23,7 @@
               </div>
               <div class='teams-card-score-players-container'>
                 <h4 style='margin-bottom:20px'>Best players</h4>
-                <% team.sort_players(team, :rating).first(3).each do |player| %>
+                <% team.sort_players(:rating).first(3).each do |player| %>
                   <div class="teams-card-score-player">
                     <% if player.image_url %>
                       <%= image_tag player.image_url, alt: "Player avatar", width: 50, style: "border-radius: 50%;" %>
