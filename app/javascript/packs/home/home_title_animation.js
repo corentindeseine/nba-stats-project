@@ -1,4 +1,9 @@
 document.addEventListener('turbolinks:load', () => {
+  // Appliquer la gestion des événements à chaque élément avec la classe home-menu-list-item
+  document.querySelectorAll('.home-menu-list-item').forEach((item) => {
+    handleMouseEvents(item);
+  });
+
   // Fonction pour gérer les événements mouseenter et mouseleave
   const handleMouseEvents = (item) => {
     item.addEventListener('mouseenter', (event) => {
@@ -15,11 +20,6 @@ document.addEventListener('turbolinks:load', () => {
     });
   };
 
-  // Appliquer la gestion des événements à chaque élément avec la classe home-menu-list-item
-  document.querySelectorAll('.home-menu-list-item').forEach((item) => {
-    handleMouseEvents(item);
-  });
-
   // Fonctions de gestion d'animation
   const showElement = (ball, title) => {
     title.classList.add('title-hover');
@@ -32,5 +32,4 @@ document.addEventListener('turbolinks:load', () => {
     ball.classList.remove('ball-hover');
     title.classList.remove('title-hover');
   };
-
 });

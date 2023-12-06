@@ -9,26 +9,18 @@
         { title: 'Players stats', path: players_path },
         { title: 'Players VS', path: player_vs_player_path },
         { title: 'Fantasy League', path: players_path }
-      ] %>
+      ]%>
 
       <% menu_items.each do |item| %>
-        <%= render 'shared/home_menu', title: item[:title], path: item[:path], data: item[:data] %>
+        <%= render 'shared/home_menu', title: item[:title], path: item[:path] %>
       <% end %>
     </div>
 
     <div class="nba-standings-container">
       <h1>NBA Standings 2023-24</h1>
-      <div class="d-flex">
-        <div class="western-conference-standings">
-          <% @western_teams.each_with_index do |team, index|%>
-            <div> <%= index + 1 %>. <%= team.name.truncate(20) %> //  W<%= team.win_lose_counter[:win] %> - D<%= team.win_lose_counter[:lose] %> </div>
-          <% end %>
-        </div>
-        <div style='margin-left:32px' class="eastern-conference-standings">
-          <% @eastern_teams.each_with_index do |team, index|%>
-            <div> <%= index + 1 %>. <%= team.name.truncate(20) %> //  W<%= team.win_lose_counter[:win] %> - D<%= team.win_lose_counter[:lose] %> </div>
-          <% end %>
-        </div>
+      <div class="standings-lists">
+        <%= render partial: 'shared/conference_standings', locals: { teams: @western_teams } %>
+        <%= render partial: 'shared/conference_standings', locals: { teams: @eastern_teams } %>
       </div>
     </div>
   </div>

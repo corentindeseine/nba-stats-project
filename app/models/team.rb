@@ -24,7 +24,6 @@ class Team < ApplicationRecord
 
   def self.split_by_conferences
     teams = Team.all
-
     east_teams = teams.select { |team| team.conference == 'East' }
     west_teams = teams.select { |team| team.conference == 'West' }
 

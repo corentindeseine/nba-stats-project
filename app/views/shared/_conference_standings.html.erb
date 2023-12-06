@@ -1,0 +1,26 @@
+<table class="conference-container <%= teams == @western_teams ? 'western-conference' : 'eastern-conference' %>">
+  <thead>
+    <tr>
+      <th>Teams</th>
+      <th>W</th>
+      <th>D</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% teams.each_with_index do |team, index| %>
+      <% team_name = team.name.split.last %>
+      <% win_rate = team.win_lose_counter[:win] / (team.win_lose_counter[:win] + team.win_lose_counter[:lose]).to_f * 100 %>
+      <tr>
+        <td class="d-flex align-items-center flex-wrap">
+          <p class="team-rank"><%= index + 1 %></p>
+          <%= cl_image_tag(team.logo.key, style: "width: 23px; margin: 0 8px 0 4px") %>
+          <p><%= team_name %></p>
+        </td>
+        <td><%= team.win_lose_counter[:win] %></td>
+        <td><%= team.win_lose_counter[:lose] %></td>
+        <td><%= win_rate.truncate(0)%> %</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
