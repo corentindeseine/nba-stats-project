@@ -1,11 +1,13 @@
-<div class="container-home" data-controller='home-animation'>
+<%= javascript_pack_tag 'home/home_title_animation.js' %>
+
+<div class="container-home">
   <div class="home-background">
     <div class="home-menu-list">
       <% menu_items = [
         { title: 'Teams', path: teams_path },
         { title: 'Games reviews', path: games_path },
         { title: 'Players stats', path: players_path },
-        { title: 'Players VS', path: player_vs_player_path, data: { home_animation_target: 'versus' } },
+        { title: 'Players VS', path: player_vs_player_path },
         { title: 'Fantasy League', path: players_path }
       ] %>
 

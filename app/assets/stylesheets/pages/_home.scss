@@ -40,22 +40,10 @@
 
         @media (min-width: 1200px) {
           font-size: 70px;
-
-          &:hover {
-            transform: translateX(60px);
-            color: white;
-          }
         }
         @media (min-width: 1500px) {
           font-size: 90px;
-
-          &:hover {
-            transform: translateX(70px);
-            color: white;
-          }
         }
-
-
       }
 
       i {
@@ -121,5 +109,10 @@
 
 .ball-hover{
   transform: rotate(136deg);
+}
 
+.title-hover {
+
+  transform: translateX(60px) !important;
+  color: white !important;
 }
