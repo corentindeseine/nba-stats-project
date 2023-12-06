@@ -88,11 +88,13 @@ namespace :nba do
     end
   end
 
-  desc "Import games data from API"
-  task import_games_from_last_month: :environment do
-    start_date = (Date.today - 24).strftime('%Y-%m-%d')
+  desc "Import games and stats data from API"
+  task :import_games_and_stats, :start_date do |t, args|
+    p t
+    start_date = args[:start_date]
     end_date = Time.now.strftime('%Y-%m-%d')
 
+    # GAMES
     url = "https://www.balldontlie.io/api/v1/games?start_date='#{start_date}'&end_date='#{end_date}'&per_page=100"
     parsing = URI.open(url).read
     total_pages = JSON.parse(parsing)['meta']['total_pages']
@@ -112,15 +114,11 @@ namespace :nba do
           home_team_id: Team.find_by(api_id: game['home_team']['id']).id,
           visitor_team_id: Team.find_by(api_id: game['visitor_team']['id']).id,
         )
+        p game
       end
     end
-    p "All games are imported"
-  end
 
-  desc "Import stats data from API"
-  task import_stats_from_last_month: :environment do
-    start_date = (Date.today - 24).strftime('%Y-%m-%d')
-    end_date = Time.now.strftime('%Y-%m-%d')
+    # STATS
     url = "https://www.balldontlie.io/api/v1/stats?start_date='#{start_date}'&end_date='#{end_date}'&per_page=100"
     parsing = URI.open(url).read
     total_pages = JSON.parse(parsing)['meta']['total_pages']
@@ -155,8 +153,10 @@ namespace :nba do
                   stat['fg3m'] +
                   triple_or_double_double(stat['pts'], stat['ast'], stat['reb'], stat['blk'], stat['stl'])
         )
+        p stat
       end
     end
-    p "All stats are imported"
+
+    p "All games and stats are imported"
   end
 end
