@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def home
     teams = Team.all.split_by_conferences
-    @western_teams = teams[:western_conference].sort_by { |team| team.win_lose_counter[:win] }.reverse
-    @eastern_teams = teams[:eastern_conference].sort_by { |team| team.win_lose_counter[:win] }.reverse
+    @western_teams = teams[:western_conference].sort_by { |team| team.win_lose_counter[:win_rate] }.reverse
+    @eastern_teams = teams[:eastern_conference].sort_by { |team| team.win_lose_counter[:win_rate] }.reverse
 
   end
 

@@ -47,6 +47,7 @@
       }
 
       i {
+        color: white;
         position: absolute;
         top: 32%;
         font-size: 46px;
@@ -96,8 +97,6 @@
   margin-left: 50px;
 }
 
-
-
 .team-rank {
   width: 12%;
 }
@@ -105,11 +104,11 @@
 // CSS class for JS
 
 .ball-hover{
+  cursor: pointer;
   transform: rotate(136deg);
 }
 
 .title-hover {
-
   transform: translateX(60px) !important;
   color: white !important;
 }
