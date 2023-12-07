@@ -11,6 +11,9 @@ module J
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # Utiliser Sidekiq comme adaptateur de file d'attente pour Active Job
+    config.active_job.queue_adapter = :sidekiq
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
