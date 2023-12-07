@@ -19,9 +19,9 @@ class Team < ApplicationRecord
   def win_lose_counter
     win_lose_counter = {win: 0, lose: 0, win_rate: 0.0}
     all_games.each {|game| game.win?(game,self) ? win_lose_counter[:win] += 1 : win_lose_counter[:lose] += 1 }
-
-    win_rate = sprintf("%.3f", win_lose_counter[:win] / (win_lose_counter[:win] + win_lose_counter[:lose]).to_f)
-    win_lose_counter[:win_rate] = "." + win_rate.to_s.split('.')[1]
+    win_rate = win_lose_counter[:win] / (win_lose_counter[:win] + win_lose_counter[:lose]).to_f
+    win_rate_formated = sprintf("%.3f", win_rate)
+    win_lose_counter[:win_rate] = "." + win_rate_formated.to_s.split('.')[1]
 
     return win_lose_counter
   end

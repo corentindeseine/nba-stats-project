@@ -12,7 +12,12 @@
       ]%>
 
       <% menu_items.each do |item| %>
-        <%= render 'shared/home_menu', title: item[:title], path: item[:path] %>
+        <div class="home-menu-list-item">
+          <%= link_to(item[:path]) do %>
+            <i class="fa-solid fa-basketball invisible"></i>
+            <p><%= item[:title] %></p>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
