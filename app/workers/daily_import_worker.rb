@@ -6,7 +6,6 @@ class DailyImportWorker
     Rake::Task['import_games_and_stats:start_date'].invoke(calculate_start_date)
   end
 
-
   private
 
   def calculate_start_date
