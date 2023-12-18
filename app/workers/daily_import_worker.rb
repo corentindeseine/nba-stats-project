@@ -6,7 +6,6 @@ class DailyImportWorker
 
   def perform
     p'************************************************************'
-    # Appeler votre tâche Rake avec la start_date
     Rake::Task['nba:import_games_and_stats'].invoke(calculate_start_date)
   end
 
