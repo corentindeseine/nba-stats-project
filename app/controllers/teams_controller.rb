@@ -6,6 +6,6 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @past_games = @team.past_games
-    @players = @team.sort_players(:rating).reject { |player| player.average(player.stats, player)[:min].zero? }
+    @players = @team.sort_players(:rating).reject { |player| player.average[:min].zero? }
   end
 end
