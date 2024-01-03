@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def versus
-    @list_players = Player.all.order(:last_name).reject { |player| player.average(player.stats, player)[:min].zero? }
+    @list_players = Player.all.order(:last_name).reject { |player| player.average[:min].zero? }
     @list_active_players = @list_players.map { |p| [p.full_name, p.id] }
     @players = []
     @search_player = params['search']

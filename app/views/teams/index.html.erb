@@ -26,7 +26,7 @@
                     <p id="teams-card-player-name"> <%= player.first_name %> <%= player.last_name %> </p>
                     <div id="teams-card-score">
                       <i>
-                        <%= player.average(player.stats, player)[:rating].round(0) %>
+                        <%= player.average[:rating].round(0) %>
                       </i>
                     </div>
                   </div>

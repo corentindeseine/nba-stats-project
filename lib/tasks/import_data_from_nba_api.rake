@@ -45,16 +45,16 @@ namespace :nba do
       players = JSON.parse(players_serialized)['data']
 
       players.each do |player|
-        player = player['player']
-        Player.create(
+        db_relative_player = Player.find_or_create_by(api_id: player['id'])
+        db_relative_player.update(
           api_id: player['id'],
           first_name: player['first_name'],
           last_name: player['last_name'],
           position: player['position'],
-          team_id: Team.find_by(api_id: player['team_id']).id
+          team: Team.find_by(api_id: player['team_id'])
         )
-        p player
       end
+      p player
     end
     p "All nba players are imported"
   end
@@ -128,35 +128,38 @@ namespace :nba do
       stats_serialized = URI.open(url_with_page).read
       stats = JSON.parse(stats_serialized)['data']
       stats.each do |stat|
-        db_relative_stat = Stat.find_or_create_by(api_id: stat['id'])
-        db_relative_stat.update(
-          min: stat['min'].to_i,
-          pts: stat['pts'],
-          reb: stat['reb'],
-          ast: stat['ast'],
-          blk: stat['blk'],
-          stl: stat['stl'],
-          turnover: stat['turnover'],
-          dreb: stat['dreb'],
-          fg3_made: stat['fg3m'],
-          fg_pct: stat['fg_pct'] * 100,
-          fg3_pct: stat['fg3_pct'] * 100,
-          ft_pct: stat['ft_pct'] * 100,
-          game: Game.find_by(api_id: stat['game']['id'].to_i),
-          player: Player.find_by(api_id: stat['player']['id'].to_i),
-          rating: stat['pts'] +
-                  stat['ast'] * 1.5 +
-                  stat['reb'] * 1.2 +
-                  stat['blk'] * 3 +
-                  stat['stl'] * 3 -
-                  stat['turnover'] * 2 +
-                  stat['fg3m'] +
-                  triple_or_double_double(stat['pts'], stat['ast'], stat['reb'], stat['blk'], stat['stl'])
-        )
         p stat
+
+        unless stat['player'].nil?
+          db_relative_stat = Stat.find_or_create_by(api_id: stat['id'])
+          db_relative_stat.update(
+            min: stat['min'].to_i,
+            pts: stat['pts'],
+            reb: stat['reb'],
+            ast: stat['ast'],
+            blk: stat['blk'],
+            stl: stat['stl'],
+            turnover: stat['turnover'],
+            dreb: stat['dreb'],
+            fg3_made: stat['fg3m'],
+            fg_pct: stat['fg_pct'] * 100,
+            fg3_pct: stat['fg3_pct'] * 100,
+            ft_pct: stat['ft_pct'] * 100,
+            game: Game.find_by(api_id: stat['game']['id']),
+            player: Player.find_by(api_id: stat['player']['id']),
+            rating: stat['pts'] +
+                    stat['ast'] * 1.5 +
+                    stat['reb'] * 1.2 +
+                    stat['blk'] * 3 +
+                    stat['stl'] * 3 -
+                    stat['turnover'] * 2 +
+                    stat['fg3m'] +
+                    triple_or_double_double(stat['pts'], stat['ast'], stat['reb'], stat['blk'], stat['stl'])
+          )
+          # p stat
+        end
       end
     end
-
     p "All games and stats are imported"
   end
 end

@@ -9,7 +9,7 @@ class Team < ApplicationRecord
   end
 
   def sort_players(stat)
-    players.sort_by { |player| player.average(player.stats, player)[stat] }.reverse
+    players.sort_by { |player| player.average[stat] }.reverse
   end
 
   def all_games

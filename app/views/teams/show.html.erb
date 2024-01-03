@@ -173,7 +173,7 @@
               <%= cl_image_tag player.team.logo.key %>
             </div>
             <div class="team-show-players-card-rating">
-              <p id='player-card-score'><%= player.average(player.stats, player)[:rating].round(0) %></p>
+              <p id='player-card-score'><%= player.average[:rating].round(0) %></p>
             </div>
             <% if player.image_url.nil? %>
               <i class="fa-solid fa-user"></i>
@@ -196,40 +196,40 @@
               <h5>Last ten games</h5>
               <div class="team-show-players-card-stat">
                 <p>Minutes</p>
-                <p id='card-stat-row'><%= player.average(player.stats, player)[:min] %></p>
+                <p id='card-stat-row'><%= player.average[:min] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>Points</p>
-              <p id='card-stat-row'><%= player.average(player.stats, player)[:pts] %></p>
+              <p id='card-stat-row'><%= player.average[:pts] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>Assits</p>
-                <p id='card-stat-row'><%= player.average(player.stats, player)[:ast] %></p>
+                <p id='card-stat-row'><%= player.average[:ast] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>Rebonds</p>
-                <p id='card-stat-row'><%= player.average(player.stats, player)[:reb] %></p>
+                <p id='card-stat-row'><%= player.average[:reb] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>Blocks</p>
-                <p id='card-stat-row'><%= player.average(player.stats, player)[:blk] %></p>
+                <p id='card-stat-row'><%= player.average[:blk] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>Steals</p>
-                <p id='card-stat-row'><%= player.average(player.stats, player)[:stl] %></p>
+                <p id='card-stat-row'><%= player.average[:stl] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>Turnover</p>
-                <p id='card-stat-row'><%= player.average(player.stats, player)[:turnover] %></p>
+                <p id='card-stat-row'><%= player.average[:turnover] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>Games played</p>
-                <p id='card-stat-row'><%= player.average(player.stats, player)[:games_played] %></p>
+                <p id='card-stat-row'><%= player.average[:games_played] %></p>
               </div>
               <div class="team-show-players-card-stat">
                 <p>5-avg / 10-avg </p>
-                <% five_game_plus_minus = (player.average(player.stats, player)[:rating_five_games]  - player.average(player.stats, player)[:rating]).round(1) %>
-                <% if player.average(player.stats, player)[:rating_five_games].zero? %>
+                <% five_game_plus_minus = (player.average[:rating_five_games]  - player.average[:rating]).round(1) %>
+                <% if player.average[:rating_five_games].zero? %>
                   <p> - </p>
                 <% else %>
                   <p id='card-stat-row' class="<%= 'team-show-players-card-fga-positive' if five_game_plus_minus > 0 %>
