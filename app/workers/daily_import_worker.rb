@@ -1,11 +1,14 @@
 require 'rake'
-require_relative '../../config/environment.rb'
+require_relative '../../config/environment'
+# Rake.application.load_imports
+
 
 class DailyImportWorker
   include Sidekiq::Worker
 
   def perform
     p'************************************************************'
+    p calculate_start_date
     Rake::Task['nba:import_games_and_stats'].invoke(calculate_start_date)
   end
 
