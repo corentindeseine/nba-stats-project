@@ -1,0 +1,39 @@
+<div class="team-show-game-card" data-action="click->team-show#launchGame"
+                                  data-game-date="<%= game.date.to_date.strftime('%d %b').upcase %>"
+                                  data-visitor-name="<%= game.visitor_team.name %>"
+                                  data-visitor-logo="<%= game.visitor_team.logo.url %>"
+                                  data-visitor-score="<%= game.visitor_team_score %>"
+                                  data-home-name="<%= game.home_team.name %>"
+                                  data-home-logo="<%= game.home_team.logo.url %>"
+                                  data-home-score="<%= game.home_team_score %>"
+                                  data-team-show-target='gameCard'
+                                  data-team-name='<%= team.name %>'>
+  <div class="win-lose-container">
+    <% if  game.win?(game,team) %>
+        <i class="fa-solid fa-check win-game-card"></i>
+    <% else %>
+        <i class="fa-solid fa-xmark lose-game-card"></i>
+    <% end %>
+  </div>
+  <div class="team-show-game-card-date" >
+    <%= game.date.to_date.strftime('%d %b').upcase %>
+  </div>
+  <div class="team-show-game-card-information
+              team-show-game-card-information-visitor
+              <%= 'winning-team' if game.visitor_team_score > game.home_team_score %>">
+    <div>
+      <%= cl_image_tag game.visitor_team.logo.key %>
+      <%= game.visitor_team.name.split(' ').last %>
+    </div>
+    <%= game.visitor_team_score%>
+  </div>
+  <div class="team-show-game-card-information
+              team-show-game-card-information-home
+              <%= 'winning-team' if game.visitor_team_score < game.home_team_score %>">
+    <div>
+      <%= cl_image_tag game.home_team.logo.key %>
+      <%= game.home_team.name.split(' ').last  %>
+    </div>
+    <%= game.home_team_score %>
+  </div>
+</div>

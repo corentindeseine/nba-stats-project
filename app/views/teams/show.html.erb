@@ -1,12 +1,18 @@
+<!-- Team Show Container -->
 <div class="container-fluid" data-controller='team-show'>
   <div class="team-show-container">
-    <h1> <%= @team.name %></h1>
+    <!-- Team Name -->
+    <div class="flex justify-between items-center">
+      <%= cl_image_tag @team.logo.key, class: "w-16 h-16 object-cover" %>
+      <h1 class="ml-4 text-2xl font-bold"><%= @team.name %></h1>
+    </div>
+
+    <!-- Last Ten Games Section -->
     <div class="team-show-main-content-container">
       <div class="team-show-game-title">
-        <h2> Last ten games</h2>
-        <i class="fa-solid fa-chevron-down"
-                              id="ten-games-chevron"
-                              data-action="click->team-show#showWinLoseMenu"></i>
+        <h2>Last ten games</h2>
+        <!-- Win/Lose Menu -->
+        <i class="fa-solid fa-chevron-down" id="ten-games-chevron" data-action="click->team-show#showWinLoseMenu"></i>
         <div class="team-show-win-lose-menu" data-team-show-target="winLoseMenu">
           <div class="team-show-win-lose-menu-item" data-action="click->team-show#sortByWin" data-team-show-target="win">
             <ul>Win</ul>
@@ -16,129 +22,21 @@
           </div>
         </div>
       </div>
+
+      <!-- Games Container -->
       <div class="team-show-games-container">
         <% @past_games.first(10).each do |game| %>
-          <div class="team-show-game-card" data-action="click->team-show#launchGame"
-                                           data-game-date="<%= game.date.to_date.strftime('%d %b').upcase %>"
-                                           data-visitor-name="<%= game.visitor_team.name %>"
-                                           data-visitor-logo="<%= game.visitor_team.logo.url %>"
-                                           data-visitor-score="<%= game.visitor_team_score %>"
-                                           data-home-name="<%= game.home_team.name %>"
-                                           data-home-logo="<%= game.home_team.logo.url %>"
-                                           data-home-score="<%= game.home_team_score %>"
-                                           data-team-show-target='gameCard'
-                                           data-team-name='<%= @team.name %>'>
-            <div class="win-lose-container">
-              <% if  game.win?(game,@team) %>
-                  <i class="fa-solid fa-check win-game-card"></i>
-              <% else %>
-                  <i class="fa-solid fa-xmark lose-game-card"></i>
-              <% end %>
-            </div>
-            <div class="team-show-game-card-date" >
-              <%= game.date.to_date.strftime('%d %b').upcase %>
-            </div>
-            <div class="team-show-game-card-information
-                        team-show-game-card-information-visitor
-                        <%= 'winning-team' if game.visitor_team_score > game.home_team_score %>">
-              <div>
-                <%= cl_image_tag game.visitor_team.logo.key %>
-                <%= game.visitor_team.name.split(' ').last %>
-              </div>
-              <%= game.visitor_team_score%>
-            </div>
-            <div class="team-show-game-card-information
-                        team-show-game-card-information-home
-                        <%= 'winning-team' if game.visitor_team_score < game.home_team_score %>">
-              <div>
-                <%= cl_image_tag game.home_team.logo.key %>
-                <%= game.home_team.name.split(' ').last  %>
-              </div>
-              <%= game.home_team_score %>
-            </div>
-          </div>
-          <%= render partial: 'shared/modal_show_game', locals: { game: game } %>
+          <%= render partial: 'shared/game_card', locals: { game: game, team: @team } %>
         <% end %>
       </div>
     </div>
+
+    <!-- Players Section -->
     <div class="team-show-main-content-container">
-      <h2> Players</h2>
+      <h2>Players</h2>
       <div class="team-show-players-container">
         <% @players.each do |player| %>
-          <%= link_to player_path(player) do %>
-            <div class="team-show-players-card">
-              <div class="team-show-players-card-logo-container">
-                <%= cl_image_tag player.team.logo.key %>
-              </div>
-              <div class="team-show-players-card-rating">
-                <p id='player-card-score'><%= player.average[:rating].round(0) %></p>
-              </div>
-              <% if player.image_url.nil? %>
-                <i class="fa-solid fa-user"></i>
-              <% else %>
-                <%= image_tag player.image_url, alt: "Player avatar", width: 190, id: "avatar_player" %>
-              <% end %>
-              <h3> <%= player.first_name %> <%= player.last_name %> </h3>
-              <h5>
-                <% if player.position == 'C' %>
-                  <%= 'Center' %>
-                <% elsif player.position == 'F' %>
-                  <%= 'Forward' %>
-                <% elsif player.position == 'G' %>
-                  <%= 'Guard' %>
-                <% else %>
-                  <%= player.position %>
-                <% end %>
-              </h5>
-              <div class="team-show-players-card-description">
-                <h5>Last ten games</h5>
-                <div class="team-show-players-card-stat">
-                  <p>Minutes</p>
-                  <p id='card-stat-row'><%= player.average[:min] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>Points</p>
-                <p id='card-stat-row'><%= player.average[:pts] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>Assits</p>
-                  <p id='card-stat-row'><%= player.average[:ast] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>Rebonds</p>
-                  <p id='card-stat-row'><%= player.average[:reb] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>Blocks</p>
-                  <p id='card-stat-row'><%= player.average[:blk] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>Steals</p>
-                  <p id='card-stat-row'><%= player.average[:stl] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>Turnover</p>
-                  <p id='card-stat-row'><%= player.average[:turnover] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>Games played</p>
-                  <p id='card-stat-row'><%= player.average[:games_played] %></p>
-                </div>
-                <div class="team-show-players-card-stat">
-                  <p>5-avg / 10-avg </p>
-                  <% five_game_plus_minus = (player.average[:rating_five_games]  - player.average[:rating]).round(1) %>
-                  <% if player.average[:rating_five_games].zero? %>
-                    <p> - </p>
-                  <% else %>
-                    <p id='card-stat-row' class="<%= 'team-show-players-card-fga-positive' if five_game_plus_minus > 0 %>
-                                                <%= 'team-show-players-card-fga-negative' if five_game_plus_minus < 0 %>">
-                      <%= five_game_plus_minus %>
-                    </p>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render partial: 'shared/player_card', locals: { player: player } %>
         <% end %>
       </div>
     </div>
